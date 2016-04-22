@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.ddl.dao.TeacherDao;
 import com.ddl.model.Teacher;
-import com.ddl.service.ITeachService;
+import com.ddl.service.ITeacherService;
 import com.ddl.util.FileOperateUtil;
 
 
 @Service(value="teacherService")
-public class TeacherService extends BaseService implements ITeachService {
+public class TeacherService extends BaseService implements ITeacherService {
 
 	@Resource
 	private TeacherDao teacherDao;
@@ -31,6 +31,7 @@ public class TeacherService extends BaseService implements ITeachService {
 		Teacher teacher = (Teacher)teacherDao.get((Teacher)object);
 		return fileOperateUtil.deleteFile(teacher.getImgPath());
 	}
+	
 	public List<?> getAll() {
 		return teacherDao.getAll();
 	}

@@ -25,37 +25,6 @@ public class AdminDao extends BaseDao {
 		}
 		return null;
 	}
-
-	public boolean modifyAdmin(Admin admin) {
-		try {
-			Session session = getSession();
-			session.beginTransaction();
-			session.update(admin);
-			session.getTransaction().commit();
-			
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-	}
-
-	public Boolean addAdmin(Admin admin) {
-		return save(admin);
-	}
-
-	public Boolean deleteAdmin(Admin admin) {
-		try {
-			Session session = getSession();
-			session.beginTransaction();
-			session.delete(admin);
-			session.getTransaction().commit();
-			
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-	}
-
 	public Boolean checkAdmin(Admin admin) {
 		try {
 			Session session = getSession();
@@ -74,18 +43,6 @@ public class AdminDao extends BaseDao {
 			return false;
 		} catch (Exception e) {
 			System.err.println("checkAdmin:"+e.getMessage());
-			return false;
-		}
-	}
-	
-	private boolean save(Object object) {
-		try {
-			Session session = getSession();
-			session.beginTransaction();
-			session.save(object);
-			session.getTransaction().commit();
-			return true;
-		} catch (Exception e) {
 			return false;
 		}
 	}

@@ -56,17 +56,16 @@ public abstract class BaseService implements IBaseService {
 	}
 
 	@Override
-	public boolean modify(Object object) {
+	public boolean update(Object object) {
 		try {
 			Session session = baseDao.getSession();
 			session.beginTransaction();
-			session.delete(object);
+			session.update(object);
 			session.getTransaction().commit();
 			return true;
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 		}
 		return false;
 	}
-
 }

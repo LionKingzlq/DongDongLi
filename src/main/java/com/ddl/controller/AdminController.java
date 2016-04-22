@@ -17,7 +17,7 @@ import net.sf.json.JSONObject;
 public class AdminController {
 
 	@Resource
-	private IAdminService adminServer;
+	private IAdminService adminService;
 	
 	@RequestMapping(value="")
 	public String login() {
@@ -33,8 +33,38 @@ public class AdminController {
 	@RequestMapping(value="/login",method = RequestMethod.POST)
 	public JSONObject check(Model model, Admin admin){
 		JSONObject result = new JSONObject();
-		boolean flag = adminServer.checkAdmin(admin);
+		boolean flag = adminService.checkAdmin(admin);
 		result.put("result", flag);
 		return result;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="add",method= RequestMethod.POST)
+	public JSONObject add(Admin admin){
+		JSONObject result = new JSONObject();
+		boolean flag = adminService.save(admin);
+		result.put("data", flag);
+		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="delete",method= RequestMethod.POST)
+	public JSONObject delete(Admin admin){
+		JSONObject result = new JSONObject();
+		boolean flag = adminService.delete(admin);
+		result.put("data", flag);
+		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="update",method= RequestMethod.POST)
+	public JSONObject update(Admin admin){
+		JSONObject result = new JSONObject();
+		boolean flag = adminService.update(admin);
+		result.put("data", flag);
+		return result;
+	}
+
+	
+	
 }
