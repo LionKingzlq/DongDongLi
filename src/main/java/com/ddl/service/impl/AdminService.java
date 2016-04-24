@@ -20,21 +20,21 @@ public class AdminService extends BaseService implements IAdminService {
 	}
 
 	@Resource
-	public void setUserDao(AdminDao adminDao) {
+	public void setAdminDao(AdminDao adminDao) {
 		this.adminDao = adminDao;
 	}
 	
 	@Override
 	public Object get(Object object) {
-		return null;
+		return adminDao.get((Admin)object);
 	}
 	@Override
-	public List<?> getAll() {
+	public List<Admin> getAll() {
 		return adminDao.getAllAdmin();
 	}
 
 	@Override
-	public boolean checkAdmin(Admin admin) {
+	public int checkAdmin(Admin admin) {
 		return adminDao.checkAdmin(admin);
 	}
 }

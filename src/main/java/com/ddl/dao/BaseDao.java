@@ -1,5 +1,7 @@
 package com.ddl.dao;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.hibernate.HibernateException;
@@ -11,6 +13,8 @@ import org.springframework.dao.support.DaoSupport;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.orm.hibernate3.SessionFactoryUtils;
 import org.springframework.stereotype.Repository;
+
+import com.ddl.model.Teacher;
 
 @Repository(value="baseDao")
 public class BaseDao extends DaoSupport {
@@ -70,5 +74,45 @@ public class BaseDao extends DaoSupport {
 
 	public final HibernateTemplate getHibernateTemplate() {
 		return this.hibernateTemplate;
+	}
+	
+	public Boolean save(Object object) {
+		try {
+			
+			Session session = getSession();
+			session.beginTransaction();
+			session.save(object);
+			session.getTransaction().commit();
+			return true;
+		} catch (HibernateException e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
+	
+	public Boolean update(Object object) {
+		try {
+			
+			Session session = getSession();
+			session.beginTransaction();
+			session.update(object);
+			session.getTransaction().commit();
+			return true;
+		} catch (HibernateException e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
+	public Boolean delete(Object object) {
+		try {
+			Session session = getSession();
+			session.beginTransaction();
+			session.delete(object);
+			session.getTransaction().commit();
+			return true;
+		} catch (HibernateException e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
 	}
 }

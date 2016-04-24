@@ -25,25 +25,38 @@ public class AdminDao extends BaseDao {
 		}
 		return null;
 	}
-	public Boolean checkAdmin(Admin admin) {
+	public int checkAdmin(Admin admin) {
 		try {
 			Session session = getSession();
 			session.beginTransaction();
 
-			Query query = session.createSQLQuery("SELECT count(*) FROM Admin where admin = '" + admin.getAdmin()
+			Query query = session.createSQLQuery("SELECT id FROM Admin where name = '" + admin.getName()
 					+ "' and password = '" + admin.getPassWord() + "'");
 			session.getTransaction().commit();
-			// BigInteger
-			int num = Integer.valueOf(query.uniqueResult().toString());
 			
-			if (num > 0) {
-				return true;
+			Object result = query.uniqueResult();
+			if(result != null){
+				// BigInteger
+				int id = Integer.valueOf(result.toString());
+				return id;
 			}
-
-			return false;
+			return 0;
 		} catch (Exception e) {
 			System.err.println("checkAdmin:"+e.getMessage());
-			return false;
+			return 0;
+		}
+	}
+	
+	public Admin get(Admin admin) {
+		try {
+			Session session = getSession();
+			session.beginTransaction();
+			Admin result = (Admin)session.get(Admin.class, admin.getId());
+			session.getTransaction().commit();
+			return result;
+		} catch (Exception e) {
+			System.err.println("checkAdmin:"+e.getMessage());
+			return null;
 		}
 	}
 }

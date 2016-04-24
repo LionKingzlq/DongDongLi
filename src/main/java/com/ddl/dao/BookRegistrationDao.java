@@ -5,18 +5,19 @@ import java.util.List;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
+import com.ddl.model.Admin;
 import com.ddl.model.BookRegistration;
 
 @Repository
 public class BookRegistrationDao extends BaseDao{
 
-	public Object get(BookRegistration bookRegistration){
+	public BookRegistration get(BookRegistration bookRegistration){
 		try {
 			Session session = getSession();
 			session.beginTransaction();
-			Object object = session.get(BookRegistration.class, (bookRegistration).getId());
+			BookRegistration object = (BookRegistration)session.get(BookRegistration.class, bookRegistration.getId());
 			session.getTransaction().commit();
-			return object;	
+			return object;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

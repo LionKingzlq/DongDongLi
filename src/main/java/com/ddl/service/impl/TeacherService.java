@@ -25,15 +25,7 @@ public class TeacherService extends BaseService implements ITeacherService {
 	public Object get(Object object) {
 		return teacherDao.get((Teacher)object);
 	}
-
-	@Override
-	public boolean delete(Object object) {
-		Teacher teacher = (Teacher)teacherDao.get((Teacher)object);
-		return fileOperateUtil.deleteFile(teacher.getImgPath());
-	}
-	
 	public List<?> getAll() {
 		return teacherDao.getAll();
 	}
-
 }

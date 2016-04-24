@@ -10,11 +10,11 @@ import com.ddl.model.InstructionAddress;
 @Repository
 public class InstructionAddressDao extends BaseDao{
 
-	public Object get(InstructionAddress instructionAddress){
+	public InstructionAddress get(InstructionAddress instructionAddress){
 		try {
 			Session session = getSession();
 			session.beginTransaction();
-			Object object = session.get(InstructionAddressDao.class, (instructionAddress).getId());
+			InstructionAddress object = (InstructionAddress) session.get(InstructionAddress.class, instructionAddress.getId());
 			session.getTransaction().commit();
 			return object;	
 		} catch (Exception e) {

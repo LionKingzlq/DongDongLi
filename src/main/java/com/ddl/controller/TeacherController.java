@@ -23,12 +23,12 @@ public class TeacherController {
 	private ITeacherService teacherService;
 	
 	@ResponseBody
-	@RequestMapping(value="getAll", method = RequestMethod.GET)
-	public JSONObject getAllTeachers(){
+	@RequestMapping(value="teachersInPage", method = RequestMethod.GET)
+	public JSONObject getAllTeachers(int pageNum){
 		@SuppressWarnings("unchecked")
 		List<Teacher> teachers = (List<Teacher>) teacherService.getAll();
 		JSONObject result = new JSONObject();
-		result.put("data", JSONArray.fromObject(teachers));
+		result.put("array", JSONArray.fromObject(teachers));
 		return result;
 	}
 	
@@ -41,5 +41,22 @@ public class TeacherController {
 		return result;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="get",method = RequestMethod.GET)
+	public JSONObject get(Teacher teacher){
+		Teacher object = (Teacher)teacherService.get(teacher);
+		JSONObject result = new JSONObject();
+		result.put("teacher", object);
+		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="delete",method = RequestMethod.GET)
+	public JSONObject delete(Teacher teacher){
+		boolean flag = teacherService.delete(teacher);
+		JSONObject result = new JSONObject();
+		result.put("flag", flag);
+		return result;
+	}
 	
 }

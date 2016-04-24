@@ -15,15 +15,8 @@ import com.ddl.service.IFAQService;
 @Repository(value="faqService")
 public class FAQService extends BaseService implements IFAQService{
 
-	FAQDao faqDao;
-	public FAQDao getResGroupDao() {
-		return faqDao;
-	}
-	
 	@Resource
-	public void setResGroupDao(FAQDao faqDao) {
-		this.faqDao = faqDao;
-	}
+	private FAQDao faqDao;
 	
 	@Override
 	public Object get(Object object) {

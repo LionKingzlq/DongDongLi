@@ -31,7 +31,8 @@
 			type:"POST",
 			data:"admin="+admin+"&passWord="+passWord,
 			success:function(data){
-				if(data.result){
+				if(data.result != 0){
+					$.cookie("adminId", data.result);
 					window.location.href="/ddl/admin/index";
 				}else{
 					alert("用户名或密码错误");
@@ -84,6 +85,7 @@
 </div>
 <div class="footer">Copyright 栋栋力教育培训机构</div>
 <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.cookie.js"></script> 
 <script type="text/javascript" src="js/H-ui.js"></script>
 </body>
 </html>

@@ -49,16 +49,13 @@
 			<input type="text" name="" id="" placeholder=" 资讯名称"
 				style="width: 250px" class="input-text">
 			<button name="" id="" class="btn btn-success" type="submit">
-				<i class="Hui-iconfont">&#xe665;</i> 搜资讯
+				<i class="Hui-iconfont">&#xe665;</i> 搜预约
 			</button>
 		</div>
 		<div class="cl pd-5 bg-1 bk-gray mt-20">
 			<span class="l"><a href="javascript:;" onclick="datadel()"
 				class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i>
-					批量删除</a> <a class="btn btn-primary radius"
-				onclick="article_add('添加目录','res-group-add.html')"
-				href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加目录</a></span> <span
-				class="r">共有数据：<strong>54</strong> 条
+					批量删除</a></span> <span class="r">共有数据：<strong>54</strong> 条
 			</span>
 		</div>
 		<div class="mt-20">
@@ -66,12 +63,17 @@
 				class="table table-border table-bordered table-bg table-hover table-sort">
 				<thead>
 					<tr class="text-c">
-						<th width="25"><input type="checkbox" name="" value=""></th>
+						<th width="20"><input type="checkbox" name="" value=""></th>
 						<th width="80">ID</th>
-						<th>标题</th>
-						<th width="120">更新时间</th>
-						<th width="75">描述</th>
-						<th width="60">责任人</th>
+						<th width="100">校区</th>
+						<th width="80">年级</th>
+						<th width="80">课程</th>
+						<th width="80">老师</th>
+						<th width="80">学生名</th>
+						<th width="80">家长姓名</th>
+						<th width="100">家长手机</th>
+						<th width="180">学生身份证</th>
+						<th width="150">添加时间</th>
 						<th width="120">操作</th>
 					</tr>
 				</thead>
@@ -82,11 +84,8 @@
 		</div>
 	</div>
 	<div id="manager" style="display: none;">
-		<a style="text-decoration: none"
-			onClick="article_shenhe(this,'iid')" href="javascript:;" title="审核">审核</a>
-		<a style="text-decoration: none" class="ml-5"
-			onClick="article_edit('资讯编辑','teach-res-list.html?resGroupId=iid','iid')"
-			href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>
+		<a style="text-decoration: none" onClick="article_shenhe(this,'iid')"
+			href="javascript:;" title="审核">审核</a>
 		<a style="text-decoration: none" class="ml-5"
 			onClick="article_del(this,'iid')" href="javascript:;" title="删除"><i
 			class="Hui-iconfont">&#xe6e2;</i></a>
@@ -100,43 +99,44 @@
 	<script type="text/javascript" src="js/H-ui.admin.js"></script>
 	<script type="text/javascript">
 		$(function() {
-			$.ajax({
-						url : "/flamenco/resgroup/resGroupListInPage",
-						data : "pageNum=1",
+			$
+					.ajax({
+						url : "/ddl/book/booksInPage",
+						data : "pageNum=0",
 						dataType : "json",
 						success : function(data) {
-							var resGroups = data['array'];
-							for (x in resGroups) {
-								var resGroup = resGroups[x];
+							var books = data['array'];
+							for (x in books) {
+								var book = books[x];
 								var tdSelect = "<td><input type='checkbox' value='1' name=''></td>";
-								var tdId = "<td>" + resGroup['id'] + "</td>";
-
-								var tdName = "<td><u style='cursor: pointer' class='text-primary' onclick='article_edit('查看','teach-res-list.html?resGrouId='"+resGroup['id']+","
-										+ resGroup['id']
-										+ ")' title='查看'>"
-										+ resGroup['name'] + "</u></td>"
-								var tdTime = "<td>" + resGroup['starttime']
-										+ "</td>";
-								var tdDescription = "<td>"
-										+ resGroup['description'] + "</td>";
-								var tdAdminId = "<td>" + resGroup['adminId']
-										+ "</td>";
+								var tdId = "<td>" + book['id'] + "</td>";
+								var tdCampus = "<td>" + book['campus'] + "</td>";
+								var tdGrade = "<td>" + book['grade'] + "</td>";
+								var tdCourse = "<td>"
+										+ book['course'] + "</td>";
+								var tdTeacher = "<td>" + book['teacher'] + "</td>";
+								var tdStudentName = "<td>" + book['studentName'] + "</td>";
+								var tdParentName = "<td>" + book['parentName'] + "</td>";
+								var tdParentPhone = "<td>" + book['parentPhone'] + "</td>";
+								var tdStudentId = "<td>" + book['studentId'] + "</td>";
+								var tdAddTime = "<td>" + book['addTime'] + "</td>";
 								var tdManage = "<td class='td-manage'>"
 										+ $("#manager").html() + "</td>";
-								
+
 								tdManage = tdManage.replace(/iid/g,
-										resGroup['id']);
-								
+										book['id']);
+
 								var tr = "<tr class='text-c'>" + tdSelect
-										+ tdId + tdName + tdTime
-										+ tdDescription + tdAdminId + tdManage
+										+ tdId + tdCampus + tdGrade + tdCourse
+										+ tdTeacher + tdStudentName + tdParentName + tdParentPhone
+										+ tdStudentId + tdAddTime + tdManage
 										+ "</tr>";
 								$(".table-sort tbody").append(tr);
 							}
 						}
 					});
 		});
-		
+
 		/*资讯-添加*/
 		function article_add(title, url, w, h) {
 			var index = layer.open({
@@ -159,10 +159,10 @@
 		function article_del(obj, id) {
 			layer.confirm('确认要删除吗？', function(index) {
 				$.ajax({
-					url:"/flamenco/resgroup/deleteResGroup",
-					data:"resGroupId="+id,
-					type:"GET",
-					success:function(){
+					url : "/flamenco/book/deletebook",
+					data : "bookId=" + id,
+					type : "GET",
+					success : function() {
 						$(obj).parents("tr").remove();
 					}
 				});

@@ -24,8 +24,8 @@ public class BookRegistration {
 	@Column(name="course")
 	private String course;
 	
-	@Column(name="teacherId")
-	private int teacherId;
+	@Column(name="teacher")
+	private String teacher;
 	
 	@Column(name="addTime")
 	private Date addTime;
@@ -75,12 +75,12 @@ public class BookRegistration {
 		this.course = course;
 	}
 
-	public int getTeacherId() {
-		return teacherId;
+	public String getTeacher() {
+		return teacher;
 	}
 
-	public void setTeacherId(int teacherId) {
-		this.teacherId = teacherId;
+	public void setTeacher(String teacher) {
+		this.teacher = teacher;
 	}
 
 	public String getAddTime() {

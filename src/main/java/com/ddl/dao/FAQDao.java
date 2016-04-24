@@ -10,11 +10,11 @@ import com.ddl.model.FAQ;
 @Repository
 public class FAQDao extends BaseDao{
 
-	public Object get(FAQ faq){
+	public FAQ get(FAQ faq){
 		try {
 			Session session = getSession();
 			session.beginTransaction();
-			Object object = session.get(FAQ.class, (faq).getId());
+			FAQ object = (FAQ) session.get(FAQ.class, (faq).getId());
 			session.getTransaction().commit();
 			return object;	
 		} catch (Exception e) {
@@ -23,11 +23,11 @@ public class FAQDao extends BaseDao{
 		return null;
 	}
 	
-	public List<?> getAll(){
+	public List<FAQ> getAll(){
 		try {
 			Session session = getSession();
 			session.beginTransaction();
-			List<?> list = session.createSQLQuery("SELECT * FROM FAQ").addEntity(FAQ.class).list();
+			List<FAQ> list = session.createSQLQuery("SELECT * FROM FAQ").addEntity(FAQ.class).list();
 			session.getTransaction().commit();
 			return list;
 		} catch (Exception e) {

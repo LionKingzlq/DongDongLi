@@ -88,14 +88,14 @@
 		<div class="menu_dropdown bk_2">
 			<dl id="menu-article">
 				<dt>
-					<i class="Hui-iconfont">&#xe616;</i> 资源管理<i
+					<i class="Hui-iconfont">&#xe616;</i> 预约管理<i
 						class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
 				</dt>
 				<dd>
 					<ul>
-						<li><a _href="res-group-list.html"
-							href="javascript:void(0)">目录管理</a></li>
-						<li><a _href="res-group-list.html"
+						<li><a _href="book-list.html"
+							href="javascript:void(0)">预约管理</a></li>
+						<li><a _href="book-list.html"
 							href="javascript:void(0)">讲义管理</a></li>
 						<li><a _href="res-group-list.html"
 							href="javascript:void(0)">作业管理</a></li>
@@ -110,7 +110,7 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a _href="member-list.html" href="javascript:;">教师列表</a></li>
+						<li><a _href="teacher-list.html" href="javascript:;">教师列表</a></li>
 						<li><a _href="member-del.html" href="javascript:;">删除的教师</a></li>
 						<li><a _href="member-record-browse.html"
 							href="javascript:void(0)">浏览记录</a></li>

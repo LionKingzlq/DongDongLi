@@ -18,6 +18,7 @@ public class CheckFilter extends OncePerRequestFilter{
 		String headerUserAgent = request.getHeader("User-Agent");
 		System.out.println("user-agent:"+headerUserAgent);
 	    
+		
         filterChain.doFilter(request, response);
         
         System.out.println("after");

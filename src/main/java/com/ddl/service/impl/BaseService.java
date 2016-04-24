@@ -50,7 +50,7 @@ public abstract class BaseService implements IBaseService {
 			session.getTransaction().commit();
 			return true;
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
 		return false;
 	}

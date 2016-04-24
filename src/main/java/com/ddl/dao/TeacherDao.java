@@ -10,11 +10,11 @@ import com.ddl.model.Teacher;
 @Repository
 public class TeacherDao extends BaseDao{
 
-	public Object get(Teacher teacher){
+	public Teacher get(Teacher teacher){
 		try {
 			Session session = getSession();
 			session.beginTransaction();
-			Object object = session.get(Teacher.class, (teacher).getId());
+			Teacher object = (Teacher)session.get(Teacher.class, (teacher).getId());
 			session.getTransaction().commit();
 			return object;	
 		} catch (Exception e) {

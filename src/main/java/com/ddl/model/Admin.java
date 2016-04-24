@@ -15,12 +15,23 @@ public class Admin {
 	@Column(name="id")
 	private int id;
 
-	@Column(name="admin")
-	private String admin;
+	@Column(name="name")
+	private String name;
 	
 	@Column(name="passWord")
 	private String passWord;
 	
+	@Column(name="adminId")
+	private int adminId;
+	
+	public int getAdminId() {
+		return adminId;
+	}
+
+	public void setAdminId(int adminId) {
+		this.adminId = adminId;
+	}
+
 	@Column(name="addTime")
 	private Date addTime;
 	
@@ -32,12 +43,12 @@ public class Admin {
 		this.id = id;
 	}
 
-	public String getAdmin() {
-		return admin;
+	public String getName() {
+		return name;
 	}
 
-	public void setAdmin(String admin) {
-		this.admin = admin;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getPassWord() {
