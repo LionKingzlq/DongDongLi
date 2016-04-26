@@ -31,7 +31,7 @@ public class AdminDao extends BaseDao {
 			session.beginTransaction();
 
 			Query query = session.createSQLQuery("SELECT id FROM Admin where name = '" + admin.getName()
-					+ "' and password = '" + admin.getPassWord() + "'");
+					+ "' and passWord = '" + admin.getPassWord() + "'");
 			session.getTransaction().commit();
 			
 			Object result = query.uniqueResult();

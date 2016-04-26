@@ -8,6 +8,5 @@ public interface IBaseService {
 	public boolean delete(Object object);
 	public boolean update(Object object);
 	public Object get(Object object);
-	public List<?> getAll();
-	
+	public List<?> getAll();	
 }

@@ -20,12 +20,12 @@
 <script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-<title>教师管理</title>
+<title>教学地址</title>
 </head>
 <body>
 	<nav class="breadcrumb">
 		<i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>
-		教师中心 <span class="c-gray en">&gt;</span> 教师管理 <a
+		数据中心 <span class="c-gray en">&gt;</span> 教学地址 <a
 			class="btn btn-success radius r mr-20"
 			style="line-height: 1.6em; margin-top: 3px"
 			href="javascript:location.replace(location.href);" title="刷新"><i
@@ -62,12 +62,8 @@
 					<tr class="text-c">
 						<th width="25"><input type="checkbox" name="" value=""></th>
 						<th width="40">ID</th>
-						<th width="80">姓名</th>
-						<th width="150">座右铭</th>
-						<th width="80">职位</th>
-						<th width="100">荣誉</th>
-						<th width="80">图片</th>
-						<th width="60">展示内容</th>
+						<th width="80">问题</th>
+						<th width="150">答案</th>
 						<th width="50">添加者</th>
 						<th width="100">添加时间</th>
 						<th width="100">操作</th>
@@ -82,10 +78,10 @@
 		<td class="td-manage"><a style="text-decoration: none"
 			onClick="member_stop(this,'iid')" href="javascript:;" title="停用"><i
 				class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;"
-			onclick="member_edit('编辑','teacher-add.html','iid','','700')"
+			onclick="member_edit('编辑','faq-add.html','iid','','500')"
 			class="ml-5" style="text-decoration: none"><i
 				class="Hui-iconfont">&#xe6df;</i></a>
-			<a title="删除" href="javascript:;" onclick="teacher_del(this,'iid')"
+			<a title="删除" href="javascript:;" onclick="faq_del(this,'iid')"
 			class="ml-5" style="text-decoration: none"><i
 				class="Hui-iconfont">&#xe6e2;</i></a></td>
 	</div>
@@ -99,44 +95,35 @@
 		$(function() {
 			$
 					.ajax({
-						url : "/ddl/teacher/teachersInPage",
-						data : "pageNum=1",
+						url : "/ddl/faq/faqInPage",
+						data : "pageNum=0",
 						dataType : "json",
 						success : function(data) {
-							var teachers = data['array'];
-							for (x in teachers) {
-								var teacher = teachers[x];
+							var faqes = data['array'];
+							for (x in faqes) {
+								var faq = faqes[x];
 
 								var tdSelect = "<td><input type='checkbox' value='1' name=''></td>";
-								var tdId = "<td>" + teacher['id'] + "</td>";
+								var tdId = "<td>" + faq['id'] + "</td>";
 
-								var tdName = "<td><u style='cursor: pointer' class='text-primary' onclick=\"member_show('"
-										+ teacher['name']
-										+ "','teacher-show.html','"+ teacher.id + "','360','400')\">"
-										+ teacher['name'] + "</u></td>"
-								var tdMotto = "<td>" + teacher['motto']
+								var tdQuestion = "<td><u style='cursor: pointer' class='text-primary' onclick=\"member_show('"
+										+ faq['question']
+										+ "','faq-add.html','"+ faq.id + "','360','400')\">"
+										+ faq['question'] + "</u></td>"
+								var tdAnswer = "<td>" + faq['answer']
 										+ "</td>";
-								var tdPosition = "<td>" + teacher['position']
+								var tdAdmin = "<td>" + faq['adminId']
 										+ "</td>";
-								var tdHonour = "<td>" + teacher['honour']
-										+ "</td>";
-								var tdImg = "<td>" + teacher['imgPath']
-										+ "</td>";
-								var tdContent = "<td>" + teacher['content']
-										+ "</td>";
-								var tdAdmin = "<td>" + teacher['adminId']
-										+ "</td>";
-								var tdAddTime = "<td>" + teacher['addTime']
+								var tdAddTime = "<td>" + faq['addTime']
 										+ "</td>";
 								var tdManage = "<td class='td-manage'>"
 										+ $("#manager").html() + "</td>";
 								tdManage = tdManage.replace(/iid/g,
-										teacher['id']);
+										faq['id']);
 
 								var tr = "<tr class='text-c'>" + tdSelect
-										+ tdId + tdName + tdMotto + tdPosition
-										+ tdHonour + tdImg + tdContent + tdAdmin
-										+ tdAddTime + tdManage + "</tr>";
+										+ tdId + tdQuestion + tdAnswer
+										+ tdAdmin + tdAddTime + tdManage + "</tr>";
 								$(".table-sort tbody").append(tr);
 							}
 
@@ -169,12 +156,12 @@
 			layer_show(title, url, w, h);
 		}
 		/*用户-删除*/
-		function teacher_del(obj, id) {
+		function faq_del(obj, id) {
 			layer.confirm('确认要删除吗？', function(index) {
 				$.ajax({
-					url : "/ddl/teacher/delete",
+					url : "/ddl/faq/delete",
 					data : "id=" + id,
-					type : "GET",
+					type : "POST",
 					success : function(data) {
 						if(data.flag)
 							$(obj).parents("tr").remove();

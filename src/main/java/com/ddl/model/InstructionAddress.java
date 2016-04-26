@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.ddl.util.FormatUtil;
+
 
 @Entity(name="InstructionAddress")
 public class InstructionAddress {
@@ -80,8 +82,8 @@ public class InstructionAddress {
 		this.adminId = adminId;
 	}
 
-	public Date getAddTime() {
-		return addTime;
+	public String getAddTime() {
+		return FormatUtil.Date2String(addTime);
 	}
 
 	public void setAddTime(Date addTime) {

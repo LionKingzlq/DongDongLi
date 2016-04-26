@@ -33,8 +33,8 @@
 </head>
 <body>
 	<header class="Hui-header cl">
-		<a class="Hui-logo l" title="H-ui.admin v2.3" href="/">栋栋力.admin</a>
-		<a class="Hui-logo-m l" href="/" title="H-ui.admin">H-ui</a> <span
+		<a class="Hui-logo l" title="H-ui.admin v2.3" href="/">栋栋力.admin</a> <a
+			class="Hui-logo-m l" href="/" title="H-ui.admin">H-ui</a> <span
 			class="Hui-subtitle l">V1.0</span>
 		<nav class="mainnav cl" id="Hui-nav">
 			<ul>
@@ -88,21 +88,21 @@
 		<div class="menu_dropdown bk_2">
 			<dl id="menu-article">
 				<dt>
-					<i class="Hui-iconfont">&#xe616;</i> 预约管理<i
+					<i class="Hui-iconfont">&#xe616;</i> 数据管理<i
 						class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
 				</dt>
 				<dd>
 					<ul>
-						<li><a _href="book-list.html"
-							href="javascript:void(0)">预约管理</a></li>
-						<li><a _href="book-list.html"
-							href="javascript:void(0)">讲义管理</a></li>
-						<li><a _href="res-group-list.html"
-							href="javascript:void(0)">作业管理</a></li>
+						<li><a _href="admin-list.html" href="javascript:void(0)">管理员管理</a></li>
+						<li><a _href="teacher-list.html" href="javascript:void(0)">教师管理</a></li>
+						<li><a _href="book-list.html" href="javascript:void(0)">预约管理</a></li>
+						<li><a _href="address-list.html" href="javascript:void(0)">教学地址</a></li>
+						<li><a _href="course-list.html" href="javascript:void(0)">课程管理</a></li>
+						<li><a _href="data-list.html" href="javascript:void(0)">数据字典</a></li>
+						<li><a _href="faq-list.html" href="javascript:void(0)">常见问题</a></li>
 					</ul>
 				</dd>
 			</dl>
-
 			<dl id="menu-member">
 				<dt>
 					<i class="Hui-iconfont">&#xe60d;</i> 教师管理<i
@@ -255,7 +255,8 @@
 		</div>
 	</section>
 	<script type="text/javascript" src="../lib/jquery/1.9.1/jquery.min.js"></script>
-	<script type="text/javascript" src="../lib/jquery/1.9.1/jquery.cookie.js"></script>
+	<script type="text/javascript"
+		src="../lib/jquery/1.9.1/jquery.cookie.js"></script>
 	<script type="text/javascript" src="../lib/layer/1.9.3/layer.js"></script>
 	<script type="text/javascript" src="../js/H-ui.js"></script>
 	<script type="text/javascript" src="../js/H-ui.admin.js"></script>

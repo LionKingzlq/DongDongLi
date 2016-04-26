@@ -24,12 +24,12 @@
 <meta name="description" content="H-ui.admin v2.3，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 <script type="text/javascript">
 	function login(){
-		var admin = $("#admin").val();
+		var name = $("#name").val();
 		var passWord = $("#passWord").val();
 		$.ajax({
 			url:"/ddl/admin/login",
 			type:"POST",
-			data:"admin="+admin+"&passWord="+passWord,
+			data:"name="+name+"&passWord="+passWord,
 			success:function(data){
 				if(data.result != 0){
 					$.cookie("adminId", data.result);
@@ -58,7 +58,7 @@
       <div class="row cl">
         <label class="form-label col-3"><i class="Hui-iconfont">&#xe60d;</i></label>
         <div class="formControls col-8">
-          <input id="admin" name="admin" type="text" placeholder="账户" class="input-text size-L">
+          <input id="name" name="name" type="text" placeholder="账户" class="input-text size-L">
         </div>
       </div>
       <div class="row cl">

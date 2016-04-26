@@ -1,0 +1,111 @@
+<!DOCTYPE html(>
+<html(>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html(5.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<script type="text/javascript" src="lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet"
+	type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>用户查看</title>
+</head>
+<body>
+	<div class="pd-20">
+		<table class="table">
+			<tbody>
+				<tr>
+					<th class="text-r" width="80">名字：</th>
+					<td><input id="key" type="text" class="input-text"
+						value="" placeholder="" /></td>
+				</tr>
+				<tr>
+					<th class="text-r">值：</th>
+					<td ><input id="value" type="text" class="input-text"
+						value="" placeholder=""/></td>
+				</tr>
+				<tr>
+					<th class="text-r">添加者：</th>
+					<td><input id="adminId" type="text" class="input-text"
+						value="" placeholder="" readonly="readonly" /></td>
+				</tr>
+				<tr>
+					<th class="text-r">注册时间：</th>
+					<td><input id="addTime" type="text" class="input-text"
+						value="" placeholder="" readonly="readonly" /></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<div class="row cl">
+			<div class="col-10 col-offset-2">
+				<button onclick="submit();" class="btn btn-primary radius" type="button">
+					<i class="Hui-iconfont">&#xe632;</i> 提交
+				</button>
+				<button onclick="layer_close();" class="btn btn-default radius"
+					type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="lib/jquery/1.9.1/jquery.cookie.js"></script>
+	<script type="text/javascript" src="lib/layer/1.9.3/layer.js"></script>
+	<script type="text/javascript" src="js/H-ui.js"></script>
+	<script type="text/javascript" src="js/H-ui.admin.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$.ajax({
+				url : "/ddl/data/get",
+				data : "id=" + getArgs("id"),
+				dataType : "json",
+				success : function(data) {
+					var data = data.data;
+					$("#key").val(data.key);
+					$("#value").val(data.value);
+					$("#adminId").val(data.adminId);
+					$("#addTime").val(data.addTime);
+				},
+				error : function() {
+
+				}
+			});
+		});
+		
+		function submit() {
+			var jsonData = {};
+			jsonData.id = getArgs("id");
+			jsonData.key = $("#key").val();
+			jsonData.value = $("#value").val();
+			jsonData.adminId = $.cookie("adminId");
+			
+			$.ajax({
+				url : "/ddl/data/update",
+				data : jsonData,
+				type:"POST",
+				dataType : "json",
+				success : function(data) {
+					layer.msg('成功',{time:2000}, function(){
+						parent.location.reload();
+						layer_close();
+					});
+				},
+				error : function() {
+
+				}
+			});
+		}
+	</script>
+</body>
+</html(>

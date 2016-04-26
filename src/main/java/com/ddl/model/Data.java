@@ -8,19 +8,35 @@ import javax.persistence.Id;
 
 import com.ddl.util.FormatUtil;
 
-@Entity(name="FAQ")
-public class FAQ {
+@Entity(name="Data")
+public class Data {
 
 	@Id
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="question")
-	private String question;
+	@Column(name="key")
+	private String key;
 	
-	@Column(name="answer")
-	private String answer;
+	@Column(name="value")
+	private String value;
 	
+	/***
+	 * 1、图片资源
+	 * 2、
+	 * 
+	 */
+	@Column(name="type")
+	private int type;
+	
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
 	@Column(name="adminId")
 	private int adminId;
 	
@@ -35,20 +51,20 @@ public class FAQ {
 		this.id = id;
 	}
 
-	public String getQuestion() {
-		return question;
+	public String getKey() {
+		return key;
 	}
 
-	public void setQuestion(String question) {
-		this.question = question;
+	public void setKey(String key) {
+		this.key = key;
 	}
 
-	public String getAnswer() {
-		return answer;
+	public String getValue() {
+		return value;
 	}
 
-	public void setAnswer(String answer) {
-		this.answer = answer;
+	public void setValue(String value) {
+		this.value = value;
 	}
 
 	public int getAdminId() {

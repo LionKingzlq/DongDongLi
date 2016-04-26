@@ -13,11 +13,35 @@ public class Course {
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="name")
-	private String name;
+	@Column(name="addressId")
+	private int addressId;
 	
-	@Column(name="value")
-	private int value;
+	@Column(name="grade")
+	private String grade;
+	
+	@Column(name="startTime")
+	private String startTime;
+	
+	@Column(name="classDay")
+	private String classDate;
+	
+	@Column(name="classTime")
+	private String classTime;
+	
+	@Column(name="teacher")
+	private String teacher;
+	
+	@Column(name="type")
+	private String type;
+	
+	@Column(name="className")
+	private String className;
+	
+	@Column(name="classRoom")
+	private String classRoom;
+	
+	@Column(name="times")
+	private int times;
 	
 	@Column(name="adminId")
 	private int adminId;
@@ -33,20 +57,84 @@ public class Course {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public int getAddressId() {
+		return addressId;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setAddressId(int addressId) {
+		this.addressId = addressId;
 	}
 
-	public int getValue() {
-		return value;
+	public String getGrade() {
+		return grade;
 	}
 
-	public void setValue(int value) {
-		this.value = value;
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getClassDate() {
+		return classDate;
+	}
+
+	public void setClassDate(String classDate) {
+		this.classDate = classDate;
+	}
+
+	public String getClassTime() {
+		return classTime;
+	}
+
+	public void setClassTime(String classTime) {
+		this.classTime = classTime;
+	}
+
+	public String getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(String teacher) {
+		this.teacher = teacher;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getClassName() {
+		return className;
+	}
+
+	public void setClassName(String className) {
+		this.className = className;
+	}
+
+	public String getClassRoom() {
+		return classRoom;
+	}
+
+	public void setClassRoom(String classRoom) {
+		this.classRoom = classRoom;
+	}
+
+	public int getTimes() {
+		return times;
+	}
+
+	public void setTimes(int times) {
+		this.times = times;
 	}
 
 	public int getAdminId() {
@@ -64,6 +152,5 @@ public class Course {
 	public void setAddTime(Date addTime) {
 		this.addTime = addTime;
 	}
-	
 	
 }
