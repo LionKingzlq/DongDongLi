@@ -84,10 +84,9 @@
 				class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;"
 			onclick="member_edit('编辑','teacher-add.html','iid','','700')"
 			class="ml-5" style="text-decoration: none"><i
-				class="Hui-iconfont">&#xe6df;</i></a>
-			<a title="删除" href="javascript:;" onclick="teacher_del(this,'iid')"
-			class="ml-5" style="text-decoration: none"><i
-				class="Hui-iconfont">&#xe6e2;</i></a></td>
+				class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
+			onclick="teacher_del(this,'iid')" class="ml-5"
+			style="text-decoration: none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 	</div>
 	<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript" src="lib/layer/1.9.3/layer.js"></script>
@@ -112,7 +111,9 @@
 
 								var tdName = "<td><u style='cursor: pointer' class='text-primary' onclick=\"member_show('"
 										+ teacher['name']
-										+ "','teacher-show.html','"+ teacher.id + "','360','400')\">"
+										+ "','teacher-show.html','"
+										+ teacher.id
+										+ "','360','400')\">"
 										+ teacher['name'] + "</u></td>"
 								var tdMotto = "<td>" + teacher['motto']
 										+ "</td>";
@@ -124,7 +125,7 @@
 										+ "</td>";
 								var tdContent = "<td>" + teacher['content']
 										+ "</td>";
-								var tdAdmin = "<td>" + teacher['adminId']
+								var tdAdmin = "<td>" + teacher['adminName']
 										+ "</td>";
 								var tdAddTime = "<td>" + teacher['addTime']
 										+ "</td>";
@@ -135,8 +136,9 @@
 
 								var tr = "<tr class='text-c'>" + tdSelect
 										+ tdId + tdName + tdMotto + tdPosition
-										+ tdHonour + tdImg + tdContent + tdAdmin
-										+ tdAddTime + tdManage + "</tr>";
+										+ tdHonour + tdImg + tdContent
+										+ tdAdmin + tdAddTime + tdManage
+										+ "</tr>";
 								$(".table-sort tbody").append(tr);
 							}
 
@@ -157,12 +159,12 @@
 		}
 		/*用户-查看*/
 		function member_show(title, url, id, w, h) {
-			layer_show(title, url+"?id="+id, w, h);
+			layer_show(title, url + "?id=" + id, w, h);
 		}
-		
+
 		/*用户-编辑*/
 		function member_edit(title, url, id, w, h) {
-			layer_show(title, url+"?id="+id, w, h);
+			layer_show(title, url + "?id=" + id, w, h);
 		}
 		/*密码-修改*/
 		function change_password(title, url, id, w, h) {
@@ -176,7 +178,7 @@
 					data : "id=" + id,
 					type : "GET",
 					success : function(data) {
-						if(data.flag)
+						if (data.flag)
 							$(obj).parents("tr").remove();
 					}
 				});

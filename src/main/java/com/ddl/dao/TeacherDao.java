@@ -27,7 +27,7 @@ public class TeacherDao extends BaseDao{
 		try {
 			Session session = getSession();
 			session.beginTransaction();
-			List<?> list = session.createSQLQuery("SELECT * FROM Teacher").addEntity(Teacher.class).list();
+			List<?> list = session.createSQLQuery("SELECT * FROM Teacher LEFT JOIN (SELECT id as adminId, name as adminName FROM Admin) AS A ON Teacher.adminId = A.adminId").addEntity(Teacher.class).list();
 			session.getTransaction().commit();
 			return list;
 		} catch (Exception e) {

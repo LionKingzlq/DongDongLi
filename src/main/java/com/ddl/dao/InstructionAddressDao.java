@@ -27,7 +27,7 @@ public class InstructionAddressDao extends BaseDao{
 		try {
 			Session session = getSession();
 			session.beginTransaction();
-			List<?> list = session.createSQLQuery("SELECT * FROM InstructionAddress").addEntity(InstructionAddress.class).list();
+			List<?> list = session.createSQLQuery("SELECT * FROM InstructionAddress AS Address LEFT JOIN (SELECT id as adminId, name as adminName FROM Admin) AS A ON Address.adminId = A.adminId").addEntity(InstructionAddress.class).list();
 			session.getTransaction().commit();
 			return list;
 		} catch (Exception e) {

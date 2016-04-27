@@ -8,38 +8,39 @@ import javax.persistence.Id;
 
 import com.ddl.util.FormatUtil;
 
-
-@Entity(name="Teacher")
+@Entity(name = "Teacher")
 public class Teacher {
 	@Id
-	@Column(name="id")
+	@Column(name = "id")
 	private int id;
 
-	@Column(name="name")
+	@Column(name = "name")
 	private String name;
-	
-	@Column(name="content")
+
+	@Column(name = "content")
 	private String content;
-	
-	@Column(name="imgPath")
+
+	@Column(name = "imgPath")
 	private String imgPath;
-	
-	@Column(name="adminId")
+
+	@Column(name = "adminId")
 	private int adminId;
-	
-	@Column(name="addTime")
+
+	@Column(name = "adminName")
+	private String adminName;
+
+	@Column(name = "addTime")
 	private Date addTime;
-	
-	@Column(name="position")
+
+	@Column(name = "position")
 	private String Position;
-	
-	@Column(name="honour")
+
+	@Column(name = "honour")
 	private String honour;
-	
-	@Column(name="motto")
+
+	@Column(name = "motto")
 	private String motto;
 
-	
 	public int getId() {
 		return id;
 	}
@@ -80,6 +81,14 @@ public class Teacher {
 		this.adminId = adminId;
 	}
 
+	public String getAdminName() {
+		return adminName;
+	}
+
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
+	}
+
 	public String getAddTime() {
 		return FormatUtil.Date2String(addTime);
 	}
@@ -111,7 +120,5 @@ public class Teacher {
 	public void setMotto(String motto) {
 		this.motto = motto;
 	}
-	
-	
-	
+
 }

@@ -27,7 +27,7 @@ public class FAQDao extends BaseDao{
 		try {
 			Session session = getSession();
 			session.beginTransaction();
-			List<FAQ> list = session.createSQLQuery("SELECT * FROM FAQ").addEntity(FAQ.class).list();
+			List<FAQ> list = session.createSQLQuery("SELECT * FROM FAQ LEFT JOIN (SELECT id as adminId, name as adminName from Admin) AS a ON FAQ.adminId = a.adminId").addEntity(FAQ.class).list();
 			session.getTransaction().commit();
 			return list;
 		} catch (Exception e) {

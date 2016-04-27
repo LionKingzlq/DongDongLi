@@ -24,6 +24,9 @@ public class FAQ {
 	@Column(name="adminId")
 	private int adminId;
 	
+	@Column(name="adminName")
+	private String adminName;
+
 	@Column(name="addTime")
 	private Date addTime;
 
@@ -59,6 +62,14 @@ public class FAQ {
 		this.adminId = adminId;
 	}
 
+	public String getAdminName() {
+		return adminName;
+	}
+
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
+	}
+	
 	public String getAddTime() {
 		return FormatUtil.Date2String(addTime);
 	}

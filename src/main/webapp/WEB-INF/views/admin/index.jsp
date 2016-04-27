@@ -270,6 +270,7 @@
 			});
 			layer.full(index);
 		}
+		
 		/*图片-添加*/
 		function picture_add(title, url) {
 			var index = layer.open({

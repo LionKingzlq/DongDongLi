@@ -3,6 +3,7 @@ package com.ddl.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,10 +34,11 @@ public class AdminController {
 	
 	@ResponseBody
 	@RequestMapping(value="/login",method = RequestMethod.POST)
-	public JSONObject check(Model model, Admin admin){
+	public JSONObject check(Model model, Admin admin, HttpSession session){
 		JSONObject result = new JSONObject();
 		int adminId = adminService.checkAdmin(admin);
 		result.put("result", adminId);
+		session.setAttribute("adminId", adminId);
 		return result;
 	}
 	
