@@ -40,6 +40,10 @@ public class Data {
 	@Column(name="adminId")
 	private int adminId;
 	
+	@Column(name="adminName")
+	private String adminName;
+	
+	
 	@Column(name="addTime")
 	private Date addTime;
 
@@ -73,6 +77,14 @@ public class Data {
 
 	public void setAdminId(int adminId) {
 		this.adminId = adminId;
+	}
+
+	public String getAdminName() {
+		return adminName;
+	}
+
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
 	}
 
 	public String getAddTime() {

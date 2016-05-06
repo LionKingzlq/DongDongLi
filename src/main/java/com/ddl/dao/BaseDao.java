@@ -1,9 +1,6 @@
 package com.ddl.dao;
 
-import java.util.List;
-
 import javax.annotation.Resource;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,8 +10,6 @@ import org.springframework.dao.support.DaoSupport;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.orm.hibernate3.SessionFactoryUtils;
 import org.springframework.stereotype.Repository;
-
-import com.ddl.model.Teacher;
 
 @Repository(value="baseDao")
 public class BaseDao extends DaoSupport {

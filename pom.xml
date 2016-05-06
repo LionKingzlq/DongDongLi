@@ -275,5 +275,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>ddl</finalName>
 	</build>
 </project>

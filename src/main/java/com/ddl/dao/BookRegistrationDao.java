@@ -2,10 +2,10 @@ package com.ddl.dao;
 
 import java.util.List;
 
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
-import com.ddl.model.Admin;
 import com.ddl.model.BookRegistration;
 
 @Repository
@@ -35,5 +35,22 @@ public class BookRegistrationDao extends BaseDao{
 			System.out.println(e.getMessage());
 		}
 		return null;
+	}
+	
+	public boolean delete(BookRegistration bookRegistration) {
+		try {
+			Session session = getSession();
+			session.beginTransaction();
+			SQLQuery sqlQuery = session.createSQLQuery("DELETE FROM BookRegistration WHERE BookRegistration.id=" + bookRegistration.getId());
+			int num = sqlQuery.executeUpdate();
+			session.getTransaction().commit();
+			releaseSession(session);
+			if(num > 0){
+				return true;
+			}
+		} catch (Exception e) {
+			
+		}
+		return false;
 	}
 }

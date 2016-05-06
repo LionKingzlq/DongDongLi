@@ -3,20 +3,28 @@ package com.ddl.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.ddl.model.Course;
 import com.ddl.service.ICourseService;
+import com.ddl.util.FileOperateUtil;
 
 import net.sf.json.JSONObject;
 
 @Controller
 @RequestMapping(value="/course")
 public class CourseController {
-
+	
+	private static final Logger logger = LoggerFactory.getLogger(DataController.class);
+	@Resource(name="fileOperateUtil")
+	private FileOperateUtil fileOperateUtil;
+	
 	@Resource
 	private ICourseService courseService;
 	
@@ -66,5 +74,20 @@ public class CourseController {
 		return result;
 	}
 	
-	
+	@ResponseBody
+	@RequestMapping(value = "courseAddList", method = RequestMethod.POST)
+	public JSONObject memberAddList(HttpServletRequest request) {
+		JSONObject result = new JSONObject();
+		try {
+			request.setCharacterEncoding("utf-8");
+			String filePath = fileOperateUtil.upLoadFile(request, false);
+			int num = courseService.saveAll(filePath);
+			result.put("code", "200");
+			result.put("num", num);
+		} catch (Exception e) {
+			logger.debug(e.getMessage());
+			result.put("code", "400");
+		}
+		return result;
+	}
 }

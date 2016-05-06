@@ -28,16 +28,10 @@
 	<resources mapping="/temp/**" location="/res/temp/" />
 	<resources mapping="/template/**" location="/res/template/" />
 	<resources mapping="/*.html" location="/WEB-INF/views/admin/" />
+	<resources mapping="/upload/**" location="/upload/" />
 	
-	<resources mapping="/admin/res/**" location="/res/" />
-	<resources mapping="/admin/css/**" location="/res/css/" />
-	<resources mapping="/admin/images/**" location="/res/images/" />
-	<resources mapping="/admin/js/**" location="/res/js/" />
-	<resources mapping="/admin/lib/**" location="/res/lib/" />
-	<resources mapping="/admin/skin/**" location="/res/skin/" />
-	<resources mapping="/admin/temp/**" location="/res/temp/" />
-	<resources mapping="/admin/template/**" location="/res/template/" />
 	<resources mapping="/admin/*.html" location="/WEB-INF/views/admin/" />
+	<resources mapping="/admin/**" location="/res/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->

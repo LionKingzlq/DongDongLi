@@ -18,7 +18,7 @@ public class AdminDao extends BaseDao {
 			session.beginTransaction();
 			List<Admin> list = session.createSQLQuery("select * from Admin").addEntity(Admin.class).list();
 			session.getTransaction().commit();
-			System.out.println(list);
+			releaseSession(session);
 			return list;
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
@@ -36,13 +36,13 @@ public class AdminDao extends BaseDao {
 			
 			Object result = query.uniqueResult();
 			if(result != null){
-				// BigInteger
 				int id = Integer.valueOf(result.toString());
 				return id;
 			}
+			releaseSession(session);
 			return 0;
 		} catch (Exception e) {
-			System.err.println("checkAdmin:"+e.getMessage());
+			logger.error("checkAdmin:"+e.getMessage());
 			return 0;
 		}
 	}
@@ -53,9 +53,10 @@ public class AdminDao extends BaseDao {
 			session.beginTransaction();
 			Admin result = (Admin)session.get(Admin.class, admin.getId());
 			session.getTransaction().commit();
+			releaseSession(session);
 			return result;
 		} catch (Exception e) {
-			System.err.println("checkAdmin:"+e.getMessage());
+			logger.error("checkAdmin:"+e.getMessage());
 			return null;
 		}
 	}

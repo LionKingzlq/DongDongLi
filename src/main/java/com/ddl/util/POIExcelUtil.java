@@ -48,6 +48,10 @@ public class POIExcelUtil {
 		
 		return false;
 	}
+
+	public int saveFAQ(String filePath){
+		return 0;
+	}
 	
 	public static void main(String[] args){
 		try {

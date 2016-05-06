@@ -28,4 +28,9 @@ public class FAQService extends BaseService implements IFAQService{
 		return faqDao.getAll();
 	}
 
+	@Override
+	public int saveAll(String filePath) {
+		return faqDao.saveAll(filePath);
+	}
+
 }

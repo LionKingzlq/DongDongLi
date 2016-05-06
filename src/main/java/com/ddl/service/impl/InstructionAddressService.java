@@ -35,5 +35,10 @@ public class InstructionAddressService extends BaseService implements IInstructi
 	public List<?> getAll() {
 		return instructionAddressDao.getAll();
 	}
+
+	@Override
+	public int saveAll(String filePath) {
+		return instructionAddressDao.saveAll(filePath);
+	}
 	
 }

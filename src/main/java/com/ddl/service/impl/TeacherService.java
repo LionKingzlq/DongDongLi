@@ -25,7 +25,13 @@ public class TeacherService extends BaseService implements ITeacherService {
 	public Object get(Object object) {
 		return teacherDao.get((Teacher)object);
 	}
+	
 	public List<?> getAll() {
 		return teacherDao.getAll();
+	}
+	
+	@Override
+	public int saveAll(String filePath) {
+		return teacherDao.saveAll(filePath);
 	}
 }

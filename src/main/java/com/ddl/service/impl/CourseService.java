@@ -32,4 +32,9 @@ public class CourseService extends BaseService implements ICourseService {
 	public List<Course> getAll() {
 		return courseDao.getAllCourse();
 	}
+
+	@Override
+	public int saveAll(String filePath) {
+		return courseDao.saveAll(filePath);
+	}
 }

@@ -21,17 +21,33 @@
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
 <title>用户查看</title>
+<script type="text/javascript">
+	window.onload = function() {
+		$("#userAvatar").fileupload({
+			url : '/ddl/teacher/upload',
+			sequentialUploads : true
+		}).bind('fileuploaddone', function(e, data) {
+			if (data.result.code == 200)
+				$("#img").attr("src", "upload/" + data.result.content);
+		});
+	}
+	function changeAvatar() {
+		$("#userAvatar").click();
+	}
+</script>
 </head>
 <body>
 	<div class="cl pd-20" style="background-color: #5bacb6">
-		<img class="avatar size-XL l" src="images/user.png" id="img">
+		<input type="file" id="userAvatar" hidden multiple /> <img
+			class="avatar size-XL l" src="images/user.png" id="img"
+			onclick="changeAvatar();">
 		<dl style="margin-left: 80px; color: #fff">
 			<dt>
 				<span class="f-18" id="name">张三</span><span class="pl-10 f-12"
 					id="honour">余额：40</span>
 			</dt>
-			<input id="motto" type="text" class="input-text pt-10 f-12" style="margin-left: 0"
-						value="" placeholder=""/> 
+			<input id="motto" type="text" class="input-text pt-10 f-12"
+				style="margin-left: 0" value="" placeholder="" />
 		</dl>
 	</div>
 	<div class="pd-20">
@@ -44,13 +60,13 @@
 				</tr>
 				<tr>
 					<th class="text-r">介绍内容：</th>
-					<td ><textarea id="content" type="text" class="input-text" style="height: 250px;"
-						value="" placeholder=""></textarea></td>
+					<td><textarea id="content" type="text" class="input-text"
+							style="height: 250px;" value="" placeholder=""></textarea></td>
 				</tr>
 				<tr>
 					<th class="text-r">添加者:</th>
-					<td ><input id="admin" type="text" class="input-text"
-						value="" placeholder="" readonly="readonly" /></td>
+					<td><input id="admin" type="text" class="input-text" value=""
+						placeholder="" readonly="readonly" /></td>
 				</tr>
 				<tr>
 					<th class="text-r">注册时间：</th>
@@ -59,10 +75,11 @@
 				</tr>
 			</tbody>
 		</table>
-		
+
 		<div class="row cl">
 			<div class="col-10 col-offset-2">
-				<button onclick="submit();" class="btn btn-primary radius" type="button">
+				<button onclick="submit();" class="btn btn-primary radius"
+					type="button">
 					<i class="Hui-iconfont">&#xe632;</i> 提交
 				</button>
 				<button onclick="layer_close();" class="btn btn-default radius"
@@ -72,6 +89,11 @@
 	</div>
 	<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript" src="lib/jquery/1.9.1/jquery.cookie.js"></script>
+	<script type="text/javascript" src="lib/jquery/1.9.1/jquery-ui.js"></script>
+	<script type="text/javascript"
+		src="lib/jquery/1.9.1/jquery.iframe-transport.js"></script>
+	<script type="text/javascript"
+		src="lib/jquery/1.9.1/jquery.fileupload.js"></script>
 	<script type="text/javascript" src="lib/layer/1.9.3/layer.js"></script>
 	<script type="text/javascript" src="js/H-ui.js"></script>
 	<script type="text/javascript" src="js/H-ui.admin.js"></script>
@@ -84,6 +106,7 @@
 				success : function(data) {
 					var teacher = data.teacher;
 					$("#name").html(teacher.name);
+					$("#img").html(teacher.imgPath);
 					$("#honour").html(teacher.honour);
 					$("#motto").val(teacher.motto);
 					$("#position").val(teacher.position);
@@ -96,7 +119,7 @@
 				}
 			});
 		});
-		
+
 		function submit() {
 			var jsonData = {};
 			jsonData.id = getArgs("id");
@@ -107,14 +130,16 @@
 			jsonData.position = $("#position").val();
 			jsonData.content = $("#content").val();
 			jsonData.adminId = $.cookie("adminId");
-			
+
 			$.ajax({
 				url : "/ddl/teacher/update",
 				data : jsonData,
-				type:"POST",
+				type : "POST",
 				dataType : "json",
 				success : function(data) {
-					layer.msg('成功',{time:2000}, function(){
+					layer.msg('成功', {
+						time : 2000
+					}, function() {
 						parent.location.reload();
 						layer_close();
 					});
@@ -126,4 +151,4 @@
 		}
 	</script>
 </body>
-</html(>
+</html>

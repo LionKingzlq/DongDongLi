@@ -3,6 +3,7 @@ package com.ddl.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.ddl.model.Admin;
 import com.ddl.service.IAdminService;
+import com.ddl.util.FileOperateUtil;
 
 import net.sf.json.JSONObject;
 
@@ -23,7 +25,8 @@ public class AdminController {
 	private IAdminService adminService;
 	
 	@RequestMapping(value="")
-	public String login() {
+	public String login(HttpServletRequest request) {
+		FileOperateUtil.init(request);
 		return "admin/login";
 	}
 	

@@ -28,4 +28,9 @@ public class DataService extends BaseService implements IDataService{
 		return dataDao.getAll();
 	}
 
+	@Override
+	public int saveAll(String filePath) {
+		return dataDao.saveAll(filePath);
+	}
+
 }

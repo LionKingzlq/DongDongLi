@@ -103,12 +103,12 @@
 		$(function() {
 			$
 					.ajax({
-						url : "/ddl/course/courseInPage",
+						url : "/ddl/course/coursesInPage",
 						data : "pageNum=0",
 						dataType : "json",
 						success : function(data) {
 							var courses = data['array'];
-							for (x in coursees) {
+							for (x in courses) {
 								var course = courses[x];
 
 								var tdSelect = "<td><input type='checkbox' value='1' name=''></td>";
@@ -118,11 +118,12 @@
 								var tdStartTime = "<td>" + course['startTime'] + "</td>";
 								var tdClassDay = "<td>" + course['classDay'] + "</td>";
 								var tdClassTime = "<td>" + course['classTime'] + "</td>";
+								var tdTeacher = "<td>" + course['teacher'] + "</td>";
 								var tdType = "<td>" + course['type'] + "</td>";
 								var tdClassName = "<td>" + course['className'] + "</td>";
 								var tdClassRoom = "<td>" + course['classRoom'] + "</td>";
 								var tdTimes = "<td>" + course['times'] + "</td>";
-								var tdAdminId = "<td>" + course['adminId'] + "</td>";
+								var tdAdmin = "<td>" + course['adminName'] + "</td>";
 								var tdAddTime = "<td>" + course['addTime'] + "</td>";
 								var tdManage = "<td class='td-manage'>"
 										+ $("#manager").html() + "</td>";
@@ -131,7 +132,7 @@
 
 								var tr = "<tr class='text-c'>" + tdSelect
 										+ tdId + tdAddressId + tdGrade + tdStartTime
-										+ tdClassDay + tdClassTime + tdType + tdClassName
+										+ tdClassDay + tdClassTime + tdTeacher + tdType + tdClassName
 										+ tdClassRoom + tdTimes
 										+ tdAdmin + tdAddTime + tdManage + "</tr>";
 								$(".table-sort tbody").append(tr);
