@@ -72,10 +72,13 @@ public class DataController {
 		JSONObject result = new JSONObject();
 		try {
 			request.setCharacterEncoding("utf-8");
-			String filePath = fileOperateUtil.upLoadFile(request, false);
+			String filePath = fileOperateUtil.upLoadFile(request);
 			int num = dataService.saveAll(filePath);
 			result.put("code", "200");
 			result.put("num", num);
+			
+			String[] fileName = filePath.split("/");
+			fileOperateUtil.deleteFile(fileName[fileName.length - 1]);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
 			result.put("code", "400");

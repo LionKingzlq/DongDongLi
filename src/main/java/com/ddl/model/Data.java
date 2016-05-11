@@ -21,9 +21,18 @@ public class Data {
 	@Column(name="value")
 	private String value;
 	
+	@Column(name="adminId")
+	private int adminId;
+	
+	@Column(name="adminName")
+	private String adminName;
+
+	@Column(name="addTime")
+	private Date addTime;
+	
 	/***
-	 * 1、图片资源
-	 * 2、
+	 * 1、文字
+	 * 2、图片资源
 	 * 
 	 */
 	@Column(name="type")
@@ -36,16 +45,6 @@ public class Data {
 	public void setType(int type) {
 		this.type = type;
 	}
-
-	@Column(name="adminId")
-	private int adminId;
-	
-	@Column(name="adminName")
-	private String adminName;
-	
-	
-	@Column(name="addTime")
-	private Date addTime;
 
 	public int getId() {
 		return id;
@@ -94,6 +93,4 @@ public class Data {
 	public void setAddTime(Date addTime) {
 		this.addTime = addTime;
 	}
-	
-	
 }

@@ -88,7 +88,7 @@ public class FAQController {
 		JSONObject result = new JSONObject();
 		try {
 			request.setCharacterEncoding("utf-8");
-			String filePath = fileOperateUtil.upLoadFile(request, false);
+			String filePath = fileOperateUtil.upLoadFile(request);
 			int num = faqService.saveAll(filePath);
 			result.put("code", "200");
 			result.put("num", num);

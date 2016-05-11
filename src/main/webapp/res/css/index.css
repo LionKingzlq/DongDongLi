@@ -1,96 +1,61 @@
 html, body {
     position:relative;
-    width: 100%;
-    height: 100%;
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
-    font-family: "Microsoft YaHei",monospace
+    text-align: center;
+    font-family: "Microsoft YaHei",monospace;
 }
 a:hover{cursor: pointer}
 
-.header { width:100%;height: 25%; }
-.header .header-left{float:left; width: 50%;height: 100%;}
-.header .header-left img{position: relative; width: 50%;height: 70%;left: 20%;top: 15%}
+.sc{margin-left: auto;margin-right: auto;width: 1349px;height: 407px}
+.indexPic{width: auto;height: auto;float: left;margin-top: 24px}
+.motto{width: auto;height: 407px;color: #ffffff}
+.tname{font-weight: bold; letter-spacing: 3px; float: right; font-size: 60px; margin-top: 40px; margin-right: 100px;}
+.ttitle{font-size: 26px; float: right; margin-left: 30px; margin-right: 100px; letter-spacing: 2px;}
+.tintro{float: right; width: 400px; margin-right: 100px; margin-top: 60px; font-size: 18px; text-indent: 2em; text-align: left; letter-spacing: 1px;}
 
-.header .header-right{float:right; width: 50%;height: 100%;}
-.header .header-right form{position: relative;left: 10%;width: 100%;height: 40%;}
-.header .header-right form .inputText{position: relative;float:left; width: 40%; height: 50%; border: 2px solid rgb(143, 194, 31);}
-.header .header-right form a .search{position: relative;width: 8%;height: 50%;}
-.header .header-right form a .book{position: relative;width: 18%;height: 50%;margin-left: 5%}
-.header .header-right .navlist .tabActive {
-    color: rgb(143, 194, 31);
-    font-size: 16px;
-    font-weight: 500;
-}
-.header .header-right .navlist {position: relative;width:100%;height: 20%;}
-.header .header-right .navlist a {margin-left: 4%;margin-right: 4%; font-weight: lighter;color: #898989;text-decoration: none}
-.header .header-right .navlist a:hover {
-    color: rgb(143, 194, 31);
-}
+.teacher{margin-left: auto;margin-right: auto;width: 1349px;height: 272px;margin-top:50px}
+.teacherIco{ width: 450px;margin-top:39px;float: left}
+.teacherIco div{ font-size: 40px;color: rgb(254,198,27);margin-top: 35px;letter-spacing: 3px}
 
-.header .header-right .arr{position: relative; width: 5%;height: 20%;left: 5%}
-.header .header-right .arr img{height:60%;width: 70%;margin-top: 40%}
+.teacherIntro{width: 859px;height: 272px;float: right}
+.teacherIntro img{float: left; margin-top: 33px; margin-left: 40px;}
+.teacherIntro .name{font-size: 54px; font-weight: bold; text-align: left; width: 580px; float: right; margin-top: 45px;}
+.teacherIntro text{font-size: 26px; float: right; margin-top: 30px; color: rgb(230, 170, 80); margin-right: 100px;margin-top:30px}
+.teacherIntro .slo{font-size: 40px;float: left; margin-top: 30px; margin-left: 110px; letter-spacing: 3px;}
 
-.intro { width:100%;height: 55%; }
-.intro .intro-left{float:left; width: 50%;height: 100%;}
-.intro .intro-left img{position: relative; width: 100%;height: 100%;}
-.intro .intro-right{float:right; width: 50%;height: 100%;background-color: rgb(143, 194, 31)}
+.hbr{width: auto;margin-left: auto;margin-right: auto;margin-top:50px}
 
-.teacher { width:100%;height: 45%; }
-.teacher .teacher-left{float:left; width: 33%;height: 100%;text-align: center}
-.teacher .teacher-left img{position: relative; width: 25%;height: 35%;margin-top: 15%}
-.teacher .teacher-left h2{color: rgb(254,198,27);font-weight: bold;font-family: "Microsoft YaHei",monospace}
-.teacher .teacher-right{float:right; width: 67%;height: 100%;text-align: center;}
-.teacher .teacher-right div{
-    position: relative;
-    width: 95%;height: 80%;
-    margin-top: 4%;
-}
-.teacher .teacher-right div .bg{ position: relative;width: 100%;height: 100% }
-.teacher .teacher-right div .tc{ position: absolute;width: 25%;height: 75%;top: 10%;left: 5% }
-.teacher .teacher-right div .name{position: relative;width: 60%;height: 20%;bottom: 110%;left: 34%;
-    font-size: 30px;font-weight: bold;letter-spacing: 1px;text-align: left}
-.teacher .teacher-right div .word{position: relative;width: 50%;height: 30%;font-size: 18px;letter-spacing: 1px;
-    text-align: center;bottom: 95%;left: 38%;}
-
-.hbr{position:relative; width: 100%;height: 10%;text-align: center}
-.hbr img{position:relative;width:88%; top: 60%}
-
-.news{position:relative; width: 100%;height: 45%;}
-.news .news-left{position:relative;float: left;width:33%;height: 100%;text-align: center}
-.news .news-left img{position: relative; width: 25%;height: 26%;;margin-top: 15%}
-.news .news-left h2{color: rgb(143, 194, 31);font-weight: bold;}
-.news .news-right{float:right; width: 67%;height: 100%;}
-.news .news-right div{ width: 100%;height: 70%;;text-align:left;}
-
-tr{font-size: 16px;}
-.time{width: 20%;text-align: left}
-td a{color: #000000;text-decoration: none}
+.news{width:1349px;height:272px;margin-left: auto;margin-right: auto;margin-top:50px}
+.news .newsIco{width: 450px;float: left}
+.news .tx{ font-size: 40px;color:rgb(143, 194, 31);margin-top: 35px;letter-spacing: 3px}
+.news .newsTitle{width: 899px;float: left}
+.news .newsTitle .tb{margin-left: 30px}
+.news .newsTitle .tb tr{line-height: 35px}
+.news .newsTitle td,.news-a{font-size:20px;color: #797979;text-decoration: none;text-align: left;margin-left: 30px}
 td a:hover{text-decoration: none ;color: rgb(143, 194, 31)}
 
-.info{position:relative; width: 100%;height: 20%;}
-.info .first{position: relative;width: 33%;height: 100%;float: left}
-.info .first div img{position:relative;width: 70%;height: 70%;margin-left: 20%;margin-top: 10%}
-.info .first div h2{color: rgb(254,198,27);font-weight: bold;font-family: "Microsoft YaHei",monospace;margin-top: 25%}
+.th{width: 1349px;margin-right: auto;margin-left: auto;height: 130px}
+.th .question{width: 449px;height: 130px;float: left}
+.th .reason{width: 449px;height: 130px;float: left}
+.th .campus{width: 449px;height: 130px;float: left}
+.th img{float: left;margin-left: 69px}
+.th .thtx{float: left;font-size: 40px;color:rgb(254,198,27);margin-top: 35px;margin-left: 15px;letter-spacing: 3px}
 
-.info .second{position: relative;width: 33%;height: 100%;float: left}
-.info .second div img{position:relative;width: 70%;height: 70%;margin-left: 20%;margin-top: 10%}
-.info .second div h2{color: rgb(254,198,27);font-weight: bold;font-family: "Microsoft YaHei",monospace;margin-top: 25%}
+.fo{width: 1349px;margin-right: auto;margin-left: auto;height: 513px}
+.fo-fi{float: left;width: 291px;height: 480px;text-align: left;color: #ffffff;margin-left: 79px;margin-top: 30px}
+.fo-fi .q{width: auto;font-size: 19px;margin-top: 40px}
+.fo-fi a{color: #ffffff;}
+.fo-fi .a{width: auto;font-size: 17px;line-height: 30px;margin-top: 5px}
+.fo-fi a:hover{color: #ffffff;text-decoration: none}
 
-.info .third{position: relative;width: 34%;height: 100%;float: left}
-.info .third div img{position:relative;width: 70%;height: 70%;margin-left: 20%;margin-top: 10%}
-.info .third div h2{color: rgb(254,198,27);font-weight: bold;font-family: "Microsoft YaHei",monospace;margin-top: 25%}
+.fo-sc{float: left;width: 291px;height: 480px;text-align: center;color: #000000;margin-left: 158px;margin-top: 30px}
+.fo-sc .q{width: auto;font-size: 21px;margin-top: 40px}
+.fo-sc .a{width: auto;font-size: 17px;line-height: 30px;}
 
-.answer{position:relative; width: 100%;height: 60%;font-family: "Microsoft YaHei",monospace;}
-.answer .first{position:relative;float: left;width: 33%;height: 100%;background-color: rgb(254,198,27)}
-.answer .second{position:relative;float: left;width: 33%;height: 100%;background-color: rgb(255,222,120)}
-.answer .third{position:relative;float: left;width: 34%;height: 100%;background-color: rgb(254,198,27)}
-.answer .first div{height: 20%;width: 100%;margin-top:7%}
-.answer .first div div{float:right;height: 45%;width:80%;font-size: 18px;font-weight:600;color: #ffffff;margin-top: 0%}
-.answer .second div{float:right;height: 10%;width: 80%;margin-top:2%;font-size: 18px;font-weight:600;color:rgb(254,198,27)}
-.answer .third div{float:right;height: 8%;width: 80%;margin-top:2%;font-size: 18px;font-weight:600;color:#ffffff}
-
-.footer {background-color: rgb(76,76,76);width: 100%;height: 20%;}
-.footer a{color: #ffffff}
-.footer a:hover{text-decoration: none ;color: rgb(143, 194, 31)}
+.fo-th{float: left;width: 301px;height: 480px;text-align: left;color: #ffffff;margin-left: 153px;margin-top: 30px}
+.fo-th .q{width: auto;font-size: 19px;margin-top: 40px}
+.fo-th .a{width: auto;font-size: 17px;line-height: 30px;;margin-top: 5px}
+.fo-th a{color: #ffffff;}
+.fo-th a:hover{color: #ffffff;text-decoration: none}

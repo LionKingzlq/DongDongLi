@@ -23,9 +23,14 @@
 <title>用户查看</title>
 <script type="text/javascript">
 	window.onload = function() {
+		var jsonData = {};
+		jsonData.id = getArgs("id");
+		
 		$("#userAvatar").fileupload({
 			url : '/ddl/teacher/upload',
-			sequentialUploads : true
+			sequentialUploads : true,
+			dataType:'json',
+			formData:jsonData
 		}).bind('fileuploaddone', function(e, data) {
 			if (data.result.code == 200)
 				$("#img").attr("src", "upload/" + data.result.content);
@@ -106,7 +111,7 @@
 				success : function(data) {
 					var teacher = data.teacher;
 					$("#name").html(teacher.name);
-					$("#img").html(teacher.imgPath);
+					$("#img").attr("src",teacher.imgPath);
 					$("#honour").html(teacher.honour);
 					$("#motto").val(teacher.motto);
 					$("#position").val(teacher.position);
@@ -121,6 +126,7 @@
 		});
 
 		function submit() {
+			
 			var jsonData = {};
 			jsonData.id = getArgs("id");
 			jsonData.name = $("#name").html();

@@ -27,6 +27,7 @@ public class AdminController {
 	@RequestMapping(value="")
 	public String login(HttpServletRequest request) {
 		FileOperateUtil.init(request);
+		
 		return "admin/login";
 	}
 	
@@ -38,6 +39,7 @@ public class AdminController {
 	@ResponseBody
 	@RequestMapping(value="/login",method = RequestMethod.POST)
 	public JSONObject check(Model model, Admin admin, HttpSession session){
+		
 		JSONObject result = new JSONObject();
 		int adminId = adminService.checkAdmin(admin);
 		result.put("result", adminId);

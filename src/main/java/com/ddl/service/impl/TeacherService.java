@@ -34,4 +34,9 @@ public class TeacherService extends BaseService implements ITeacherService {
 	public int saveAll(String filePath) {
 		return teacherDao.saveAll(filePath);
 	}
+	
+	@Override
+	public boolean update(Object object) {
+		return teacherDao.update((Teacher)object);
+	}
 }

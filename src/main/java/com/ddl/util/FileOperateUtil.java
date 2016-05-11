@@ -32,32 +32,43 @@ public class FileOperateUtil {
 	 * @param request
 	 * @throws IOException
 	 */
-	public String upLoadFile(HttpServletRequest request, boolean flag) throws IOException {
+	public String upLoadFile(HttpServletRequest request, String filePath) throws IOException {
 		init(request);
-
 		MultipartHttpServletRequest mRequest = (MultipartHttpServletRequest) request;
 		Map<String, MultipartFile> fileMap = mRequest.getFileMap();
-		File file = new File(FILEDIR);
-		if (!file.exists()) {
-			file.mkdir();
-		}
 		Iterator<Map.Entry<String, MultipartFile>> it = fileMap.entrySet().iterator();
-
-		String filePath = null;
 
 		while (it.hasNext()) {
 			Map.Entry<String, MultipartFile> entry = it.next();
 			MultipartFile mFile = entry.getValue();
 			if (mFile.getSize() != 0 && !"".equals(mFile.getName())) {
-				filePath = initFilePath(mFile.getOriginalFilename());
-				System.out.println("filePath:" + filePath);
+				deleteFile(filePath);
+				filePath = FILEDIR + "/" + filePath;
 				write(mFile.getInputStream(), new FileOutputStream(filePath));
-
 			}
 		}
-		if (flag && filePath != null)
-			poiExcelUtil.saveUsersToDataBase(filePath);
-
+		return filePath;
+	}
+	
+	/**
+	 * 
+	 * @param request
+	 * @throws IOException
+	 */
+	public String upLoadFile(HttpServletRequest request) throws IOException {
+		init(request);
+		MultipartHttpServletRequest mRequest = (MultipartHttpServletRequest) request;
+		Map<String, MultipartFile> fileMap = mRequest.getFileMap();
+		Iterator<Map.Entry<String, MultipartFile>> it = fileMap.entrySet().iterator();
+		String filePath = null;
+		while (it.hasNext()) {
+			Map.Entry<String, MultipartFile> entry = it.next();
+			MultipartFile mFile = entry.getValue();
+			if (mFile.getSize() != 0 && !"".equals(mFile.getName())) {
+				filePath = initFilePath(mFile.getOriginalFilename());
+				write(mFile.getInputStream(), new FileOutputStream(filePath));
+			}
+		}
 		return filePath;
 	}
 
@@ -107,6 +118,7 @@ public class FileOperateUtil {
 		int num = 2;
 		String filePath = (file.getPath() + "/" + name).replaceAll(" ", "-");
 		File file2 = new File(filePath);
+		
 		while (file2.exists()) {
 			filePath = (file.getPath() + "/" + num + name).replaceAll(" ", "-");
 			file2 = new File(filePath);

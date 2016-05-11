@@ -36,7 +36,7 @@ public class DataDao extends BaseDao{
 	}
 	
 	public List<Data> getAll(){
-		String sql = "SELECT * FROM Data LEFT JOIN (SELECT id, name as adminName FROM Admin)AS A ON Data.adminId = A.id";
+		String sql = "SELECT * FROM Data LEFT JOIN (SELECT id as adminId, name as adminName FROM Admin) AS A ON Data.adminId = A.adminId";
 		try {
 			Session session = getSession();
 			session.beginTransaction();

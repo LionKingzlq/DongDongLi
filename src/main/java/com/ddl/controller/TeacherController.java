@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,6 +32,15 @@ public class TeacherController {
 	@Resource(name="fileOperateUtil")
 	private FileOperateUtil fileOperateUtil;
 	
+	@RequestMapping(value="")
+	public String teacherPage(Model model) {
+		Teacher teacher = new Teacher();
+		teacher.setId(1);
+		
+		model.addAttribute("wang", teacherService.get(teacher));
+		model.addAttribute("teachers", teacherService.getAll());
+		return "teacher";
+	}
 	@ResponseBody
 	@RequestMapping(value="teachersInPage", method = RequestMethod.GET)
 	public JSONObject getAllTeachers(int pageNum){
@@ -52,10 +62,11 @@ public class TeacherController {
 	@ResponseBody
 	@RequestMapping(value = "upload")
 	public JSONObject upload(HttpServletRequest request) {
+		String filePath = "teacher_" + request.getParameter("id") + ".png";
 		JSONObject result = new JSONObject();
 		try {
 			request.setCharacterEncoding("utf-8");
-			String filePath = fileOperateUtil.upLoadFile(request,false);
+			filePath = fileOperateUtil.upLoadFile(request, filePath);
 			String[] fileName = filePath.split("/");
 			result.put("content", fileName[fileName.length - 1]);
 			result.put("code", 200);
@@ -88,7 +99,7 @@ public class TeacherController {
 		JSONObject result = new JSONObject();
 		try {
 			request.setCharacterEncoding("utf-8");
-			String filePath = fileOperateUtil.upLoadFile(request, false);
+			String filePath = fileOperateUtil.upLoadFile(request);
 			int num = teacherService.saveAll(filePath);
 			result.put("code", "200");
 			result.put("num", num);

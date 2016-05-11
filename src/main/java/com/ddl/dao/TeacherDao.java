@@ -85,6 +85,33 @@ public class TeacherDao extends BaseDao {
 		return false;
 	}
 
+	public boolean update(Teacher teacher) {
+		try {
+			Session session = getSession();
+			session.beginTransaction();
+			SQLQuery sqlQuery = session.createSQLQuery("UPDATE Teacher SET name = ?, motto = ?, position = ?, honour = ?, imgPath = ?, content = ?, adminId =? WHERE Teacher.id="+teacher.getId());
+			
+			sqlQuery.setString(0, teacher.getName());
+			sqlQuery.setString(1, teacher.getMotto());
+			sqlQuery.setString(2, teacher.getPosition());
+			sqlQuery.setString(3, teacher.getHonour());
+			sqlQuery.setString(4, teacher.getImgPath());
+			sqlQuery.setString(5, teacher.getContent());
+			sqlQuery.setInteger(6, teacher.getAdminId());
+			sqlQuery.addEntity(Teacher.class);
+			
+			int num = sqlQuery.executeUpdate();
+			session.getTransaction().commit();
+			releaseSession(session);
+			if(num != 0){
+				return true;
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return false;
+	}
+	
 	public List<?> getAll() {
 		try {
 			Session session = getSession();
@@ -143,6 +170,5 @@ public class TeacherDao extends BaseDao {
 		}
 		return result;
 	}
-	
 	
 }
