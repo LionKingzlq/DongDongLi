@@ -93,5 +93,13 @@ public class AdminController {
 		return result;
 	}
 	
-	
+	@ResponseBody
+	@RequestMapping(value="/deleteMore",method = RequestMethod.POST)
+	public void deleteMore(int[] ids){
+		for (int id:ids) {
+			Admin admin = new Admin();
+			admin.setId(id);
+			adminService.delete(admin);
+		}
+	}
 }

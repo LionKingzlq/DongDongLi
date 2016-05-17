@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ddl.model.Teacher;
+import com.ddl.model.Teacher;
 import com.ddl.service.ITeacherService;
 import com.ddl.util.FileOperateUtil;
 
@@ -108,5 +109,15 @@ public class TeacherController {
 			result.put("code", "400");
 		}
 		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/deleteMore",method = RequestMethod.POST)
+	public void deleteMore(int[] ids){
+		for (int id:ids) {
+			Teacher teacher = new Teacher();
+			teacher.setId(id);
+			teacherService.delete(teacher);
+		}
 	}
 }

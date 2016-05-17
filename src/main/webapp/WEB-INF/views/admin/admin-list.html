@@ -75,7 +75,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				
+
 			</tbody>
 		</table>
 	</div>
@@ -108,7 +108,7 @@
 							var admins = data['array'];
 							for (x in admins) {
 								var admin = admins[x];
-								var tdSelect = "<td><input type='checkbox' value='"+ x +"' name=''></td>";
+								var tdSelect = "<td><input type='checkbox' name='id' value='"+ admin['id'] +"' name=''></td>";
 								var tdId = "<td>" + admin['id'] + "</td>";
 								var tdName = "<td>" + admin['name'] + "</td>"
 								var tdPhone = "<td>13000000000</td>";
@@ -219,6 +219,20 @@
 									time : 1000
 								});
 							});
+		}
+		function datadel(){
+			var data =[]; 
+			$("input:checkbox:checked").each(function(){ 
+				data.push($(this).val()); 
+			});
+			$.ajax({
+				url : "/ddl/admin/deleteMore",
+				data : "ids=" + data,
+				type : "POST",
+				success : function() {
+					window.location.reload();
+				}
+			});
 		}
 	</script>
 </body>

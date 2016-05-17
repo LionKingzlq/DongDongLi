@@ -155,18 +155,19 @@
 			});
 			layer.full(index);
 		}
-		/*资讯-删除*/
-		function article_del(obj, id) {
-			layer.confirm('确认要删除吗？', function(index) {
-				$.ajax({
-					url : "/flamenco/book/deletebook",
-					data : "bookId=" + id,
-					type : "GET",
-					success : function() {
-						$(obj).parents("tr").remove();
-					}
-				});
-				layer.close(index);
+		
+		function datadel(){
+			var data =[]; 
+			$("input:checkbox:checked").each(function(){ 
+				data.push($(this).val()); 
+			});
+			$.ajax({
+				url : "/ddl/book/deleteMore",
+				data : "ids=" + data,
+				type : "POST",
+				success : function() {
+					window.location.reload();
+				}
 			});
 		}
 	</script>

@@ -173,6 +173,20 @@
 				layer.close(index);
 			});
 		}
+		function datadel(){
+			var data =[]; 
+			$("input:checkbox:checked").each(function(){ 
+				data.push($(this).val()); 
+			});
+			$.ajax({
+				url : "/ddl/address/deleteMore",
+				data : "ids=" + data,
+				type : "POST",
+				success : function() {
+					window.location.reload();
+				}
+			});
+		}
 	</script>
 	<div id="test"></div>
 </body>

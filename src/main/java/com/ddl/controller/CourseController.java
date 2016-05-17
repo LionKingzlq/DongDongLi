@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.ddl.model.Admin;
 import com.ddl.model.Course;
 import com.ddl.service.ICourseService;
 import com.ddl.util.FileOperateUtil;
@@ -93,5 +95,15 @@ public class CourseController {
 			result.put("code", "400");
 		}
 		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/deleteMore",method = RequestMethod.POST)
+	public void deleteMore(int[] ids){
+		for (int id:ids) {
+			Course course = new Course();
+			course.setId(id);
+			courseService.delete(course);
+		}
 	}
 }

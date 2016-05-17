@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.ddl.model.InstructionAddress;
 import com.ddl.model.InstructionAddress;
 import com.ddl.service.IInstructionAddressService;
 import com.ddl.util.FileOperateUtil;
@@ -89,5 +91,15 @@ public class InstructionAddressController {
 			result.put("code", "400");
 		}
 		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/deleteMore",method = RequestMethod.POST)
+	public void deleteMore(int[] ids){
+		for (int id:ids) {
+			InstructionAddress address = new InstructionAddress();
+			address.setId(id);
+			instructionAddressService.delete(address);
+		}
 	}
 }

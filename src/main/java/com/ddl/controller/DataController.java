@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ddl.model.Data;
+import com.ddl.model.Data;
 import com.ddl.service.IDataService;
 import com.ddl.util.FileOperateUtil;
 
@@ -84,5 +85,15 @@ public class DataController {
 			result.put("code", "400");
 		}
 		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/deleteMore",method = RequestMethod.POST)
+	public void deleteMore(int[] ids){
+		for (int id:ids) {
+			Data data = new Data();
+			data.setId(id);
+			dataService.delete(data);
+		}
 	}
 }
