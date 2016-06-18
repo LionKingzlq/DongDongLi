@@ -48,4 +48,27 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/about", method = RequestMethod.GET)
+	public String about(Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		model.addAttribute("faqs",faqService.getAll());
+		model.addAttribute("addresses",instructionAddressService.getAll());
+		return "about";
+	}
+	
+	@RequestMapping(value="/book")
+	public String book(){
+		return "book";
+	}
+	@RequestMapping(value="/book2")
+	public String book2(){
+		return "book2";
+	}
+	
+	@RequestMapping(value="/contact")
+	public String contact(){
+		return "contact";
+	}
+	
 }

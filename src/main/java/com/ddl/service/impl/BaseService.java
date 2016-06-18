@@ -34,6 +34,7 @@ public abstract class BaseService implements IBaseService {
 			session.beginTransaction();
 			session.save(object);
 			session.getTransaction().commit();
+			session.flush();
 			return true;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -48,6 +49,7 @@ public abstract class BaseService implements IBaseService {
 			session.beginTransaction();
 			session.delete(object);
 			session.getTransaction().commit();
+			session.flush();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

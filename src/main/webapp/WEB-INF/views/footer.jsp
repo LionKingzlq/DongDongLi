@@ -1,78 +1,57 @@
-<%@page import="com.ddl.model.*"%>
-<%@page import="java.util.*"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ page isELIgnored="false"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <style>
-.footer {
-	width: 1349px;
-	height: 170px;
-	background-color: rgb(79, 79, 79);
-	margin-left: auto;
-	margin-right: auto
-}
-
-.footer a {
-	color: #ffffff;
-	margin-left: 5px;
-	margin-right: 5px;
-}
-
-.footer a:hover {
-	text-decoration: none;
-	color: rgb(143, 194, 31)
-}
+  .footer {width:1349px;height: 170px;background-color: rgb(79,79,79);margin-left: auto;margin-right: auto}
+  .footer a{color: #ffffff;margin-left: 5px;margin-right: 5px;}
+  .footer a:hover{text-decoration: none ;color: rgb(143, 194, 31)}
 </style>
 
 <div class="footer">
-	<div
-		style="position: relative; float: left; width: 944px; height: 170px; text-align: center">
-		<div
-			style="height: auto; width: 755px; height: 38px; margin-left: auto; margin-right: auto; margin-top: 28px; color: rgb(143, 194, 31)">
-			<div
-				style="float: left; text-align: left; height: auto; width: 566px; font-size: 26px; font-weight: 600">课程介绍</div>
-			<div
-				style="float: left; text-align: left; height: auto; width: 189px; font-size: 26px; font-weight: 600">加入我们</div>
-		</div>
-		<div
-			style="height: auto; width: 755px; margin-left: auto; margin-right: auto; margin-top: 28px; height: 43px; color: #ffffff">
-			<div
-				style="float: left; text-align: left; height: auto; width: 566px; font-size: 17px;">
-				<a style="margin-left: 0">一年级</a>| <a>二年级</a>| <a>三年级</a>| <a>四年级</a>|
-				<a>五年级</a>| <a>初中</a>
-			</div>
-			<div
-				style="float: left; text-align: left; height: auto; width: 189px; font-size: 17px;">
-				<a style="margin-left: 0">应聘教师</a>| <a>其他</a>
-			</div>
-		</div>
-		<div
-			style="position: relative; height: 30px; width: 780px; border: groove 4px rgb(52, 52, 52); color: #ffffff; margin-left: auto; margin-right: auto">
-			copyright © 2016-20xx Dongdongli.All Rights
-			Reserved.上海栋栋梨教育投资有限公司版权所有</div>
-	</div>
-	<div style="float: left; width: 405px; height: 170px">
-		<div
-			style="float: left; height: 38px; width: 121px; margin-top: 28px; color: rgb(143, 194, 31)">
-			<div
-				style="float: left; text-align: left; height: 38px; width: 121px; font-size: 26px; font-weight: 600">关注我们
-			</div>
-		</div>
-		<div style="float: right; height: 160px; width: 284px;">
-			<div style="height: 160px; width: 284px;">
-				<div
-					style="float: left; width: 142px; height: 160px; text-align: center">
-					<img src="<c:url value="/res/upload/weibo.png"/>"
-						style="height: 90px; width: 90px; margin-top: 20px">
+  <div style="position:relative;float:left;width: 944px;height: 170px;text-align: center">
+    <div style="height: auto;width: 755px;height: 38px;margin-left: auto;margin-right:auto;
+                margin-top: 28px;color: rgb(143, 194, 31)">
+      <div style="float:left;text-align: left;height: auto;width: 566px;font-size: 26px;font-weight: 600">课程介绍</div>
+      <div style="float:left;text-align: left;height: auto;width: 189px;font-size: 26px;font-weight: 600">加入我们</div>
+    </div>
+    <div style="height: auto;width: 755px;margin-left: auto;margin-right: auto;margin-top:28px;
+                    height: 43px;color:#ffffff">
+      <div style="float:left;text-align: left;height: auto;width: 566px;font-size: 17px;">
+        <a style="margin-left: 0">一年级</a>|
+        <a >二年级</a>|
+        <a>三年级</a>|
+        <a>四年级</a>|
+        <a>五年级</a>|
+        <a>初中</a>
+      </div>
+      <div style="float:left;text-align: left;height: auto;width: 189px;font-size: 17px;">
+        <a style="margin-left: 0">应聘教师</a>|
+        <a>其他</a>
+      </div>
+    </div>
+    <div style="position: relative;height: 30px;width: 780px;border: groove 4px rgb(52, 52, 52);
+                    color: #ffffff;margin-left: auto;margin-right: auto">
+      copyright © 2016-2066 Dongdongli.All Rights Reserved.上海栋栋梨教育投资有限公司版权所有
+    </div>
+  </div>
+  <div style="float:left;width: 405px;height: 170px">
+    <div style="float:left;height: 38px;width: 121px;margin-top: 28px;color: rgb(143, 194, 31)">
+      <div style="float:left;text-align: left;height: 38px;width: 121px;font-size: 26px;font-weight: 600">关注我们
+      </div>
+    </div>
+    <div style="float:right;height: 160px;width: 284px;">
+      <div style="height: 160px;width:  284px;">
+        <div style="float:left;width: 142px;height:160px;text-align: center">
+          <img src="<c:url value="/res/images/footer/sm-wbcode.png"/>"
+               style="height: 90px;width: 90px;margin-top: 20px">
 
-					<div style="color: #ffffff; font-size: 17px; margin-top: 20px">weibo</div>
-				</div>
-				<div
-					style="float: left; height: 160px; width: 142px; text-align: center">
-					<img src="<c:url value="/res/upload/wechat.png"/>"
-						style="height: 90px; width: 90px; margin-top: 20px">
-					<div style="color: #ffffff; font-size: 17px; margin-top: 20px">wechat</div>
-				</div>
-			</div>
-		</div>
-	</div>
+          <div style="color: #ffffff;font-size: 17px;margin-top: 20px">weibo</div>
+        </div>
+        <div style="float:left;height: 160px;width: 142px;text-align: center">
+          <img src="<c:url value="/res/images/footer/sm-wxcode.png"/>"
+               style="height: 90px;width: 90px;margin-top: 20px">
+          <div style="color: #ffffff;font-size: 17px;margin-top: 20px">wechat</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

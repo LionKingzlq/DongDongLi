@@ -1,0 +1,10 @@
+body{margin-left: -30px;}
+.bg{width: 1349px;height: 754px}
+.tx-hd{text-align: right;font-size: 60px;font-weight: bold;letter-spacing: 5px}
+.tx-shd{text-align: right;font-size: 40px;letter-spacing: 3px}
+.add-qu{text-align: left;font-size: 18px;margin-top: 20px;margin-left: 20px}
+.add-det{text-align: left;font-size: 18px;margin-top: 10px;margin-left: 20px;color: rgb(79,79,79)}
+.tx-sys{text-align: right;font-size: 60px;font-weight: bold;color: #fff;letter-spacing: 5px}
+.tx-dt{text-align: right;font-size: 40px;color: #fff;letter-spacing: 3px}
+.tx-code{margin-top:20px;font-size: 26px;color: #fff}
+.bpic{width: 1349px;height: 585px}

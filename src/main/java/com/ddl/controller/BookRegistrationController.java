@@ -21,16 +21,6 @@ public class BookRegistrationController {
 	@Resource
 	private IBookRegistrationService bookRegistrationService;
 	
-	@RequestMapping(value="")
-	public String login() {
-		return "admin/login";
-	}
-	
-	@RequestMapping(value="index")
-	public String Index(){
-		return "admin/index";
-	}
-	
 	@ResponseBody
 	@RequestMapping(value="add",method= RequestMethod.POST)
 	public JSONObject add(Admin admin){
