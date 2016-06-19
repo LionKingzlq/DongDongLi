@@ -48,7 +48,7 @@
 							src="/ddl/upload/teacher_1.png" /></a>
 					</div>
 					<div class="title">
-						<a class="name" href="teacher?id=1" style="color: rgb(79, 79, 79)" target="_blank">王佳栋</a>
+						<a class="name" href="/ddl/teacher/detail?id=1" style="color: rgb(79, 79, 79)" target="_blank">王佳栋</a>
 					</div>
 				</li>
 				<li>
@@ -57,7 +57,7 @@
 							src="/ddl/upload/teacher_2.png" /></a>
 					</div>
 					<div class="title">
-						<a class="name" href="teacher?id=2" style="color: rgb(79, 79, 79)" target="_blank">张立权</a>
+						<a class="name" href="/ddl/teacher/detail?id=2" style="color: rgb(79, 79, 79)" target="_blank">张立权</a>
 					</div>
 				</li>
 				<li>
@@ -66,7 +66,7 @@
 							src="/ddl/upload/teacher_3.png" /></a>
 					</div>
 					<div class="title">
-						<a class="name" href="teacher?id=3" style="color: rgb(79, 79, 79)" target="_blank">梨浩</a>
+						<a class="name" href="/ddl/teacher/detail?id=3" style="color: rgb(79, 79, 79)" target="_blank">梨浩</a>
 					</div>
 				</li>
 			</ul>

@@ -37,4 +37,14 @@ public class CourseService extends BaseService implements ICourseService {
 	public int saveAll(String filePath) {
 		return courseDao.saveAll(filePath);
 	}
+	
+	@Override
+	public boolean update(Object object) {
+		return courseDao.update((Course)object);
+	}
+	
+	@Override
+	public boolean delete(Object object) {
+		return courseDao.delete((Course)object);
+	}
 }

@@ -56,12 +56,12 @@
 				style="margin-left: 98px; width: 359px; height: 359px; -webkit-border-radius: 50em; -moz-border-radius: 50em; border-radius: 50em;">
 		</div>
 		<div class="info-intro">
-			<div class="info-name">${wang.name}</div>
-			<div class="info-title">${wang.position}</div>
+			<div class="info-name">${teacher.name}</div>
+			<div class="info-title">${teacher.position}</div>
 			<c:if test="${!flag}">
 				<div class="info-quote1">
 					<img src="/ddl/res/images/teacher/s.JPG"
-						style="margin-left: 30px; margin-right: 35px; vertical-align: super">${wang.motto}
+						style="margin-left: 30px; margin-right: 35px; vertical-align: super">${teacher.motto}
 					<img src="<c:url value="/res/images/teacher/x.JPG"/>"
 						style="margin-left: 30px; margin-right: 35px; vertical-align: super">
 				</div>
@@ -79,7 +79,7 @@
 	</div>
 	</div>
 	<div class="intro">
-		${wang.content}
+		${teacher.content}
 	</div>
 	<%@ include file="ddl.jsp"%>
 	<%@ include file="footer.jsp"%>

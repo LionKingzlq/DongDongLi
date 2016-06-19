@@ -59,7 +59,7 @@ public class DataController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="delete",method = RequestMethod.GET)
+	@RequestMapping(value="delete",method = RequestMethod.POST)
 	public JSONObject delete(Data data){
 		boolean flag = dataService.delete(data);
 		JSONObject result = new JSONObject();
@@ -70,11 +70,12 @@ public class DataController {
 	@ResponseBody
 	@RequestMapping(value = "dataAddList", method = RequestMethod.POST)
 	public JSONObject memberAddList(HttpServletRequest request) {
+		int adminId = Integer.parseInt(request.getParameter("adminId").toString());
 		JSONObject result = new JSONObject();
 		try {
 			request.setCharacterEncoding("utf-8");
 			String filePath = fileOperateUtil.upLoadFile(request);
-			int num = dataService.saveAll(filePath);
+			int num = dataService.saveAll(filePath, adminId);
 			result.put("code", "200");
 			result.put("num", num);
 			
@@ -95,5 +96,24 @@ public class DataController {
 			data.setId(id);
 			dataService.delete(data);
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "upload")
+	public JSONObject upload(HttpServletRequest request) {
+		String filePath = "data_" + request.getParameter("id") + ".png";
+		JSONObject result = new JSONObject();
+		try {
+			request.setCharacterEncoding("utf-8");
+			filePath = fileOperateUtil.upLoadFile(request, filePath);
+			System.out.println(filePath);
+			
+			String[] fileName = filePath.split("/");
+			result.put("content", fileName[fileName.length - 1]);
+			result.put("code", 200);
+		} catch (Exception e) {
+			result.put("code", 400);
+		}
+		return result;
 	}
 }

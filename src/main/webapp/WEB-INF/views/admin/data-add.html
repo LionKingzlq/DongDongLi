@@ -28,13 +28,16 @@
 			<tbody>
 				<tr>
 					<th class="text-r" width="80">名字：</th>
-					<td><input id="key" type="text" class="input-text"
-						value="" placeholder="" /></td>
+					<td><input id="key" type="text" class="input-text" value=""
+						placeholder="" /></td>
 				</tr>
 				<tr>
 					<th class="text-r">值：</th>
-					<td ><input id="value" type="text" class="input-text"
-						value="" placeholder=""/></td>
+					<td class="textInput"><input id="value" type="text"
+						class="input-text" value="" placeholder="" /></td>
+					<td class="ImgInput" hidden><input type="file" id="imgFile" hidden
+						multiple /> <img class="avatar size-XL l" src="images/user.png"
+						id="img" onclick="changeAvatar();"></td>
 				</tr>
 				<tr>
 					<th class="text-r">添加者：</th>
@@ -48,10 +51,11 @@
 				</tr>
 			</tbody>
 		</table>
-		
+
 		<div class="row cl">
 			<div class="col-10 col-offset-2">
-				<button onclick="submit();" class="btn btn-primary radius" type="button">
+				<button onclick="submit();" class="btn btn-primary radius"
+					type="button">
 					<i class="Hui-iconfont">&#xe632;</i> 提交
 				</button>
 				<button onclick="layer_close();" class="btn btn-default radius"
@@ -61,42 +65,79 @@
 	</div>
 	<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript" src="lib/jquery/1.9.1/jquery.cookie.js"></script>
+	<script type="text/javascript" src="lib/jquery/1.9.1/jquery-ui.js"></script>
+	<script type="text/javascript"
+		src="lib/jquery/1.9.1/jquery.iframe-transport.js"></script>
+	<script type="text/javascript"
+		src="lib/jquery/1.9.1/jquery.fileupload.js"></script>
 	<script type="text/javascript" src="lib/layer/1.9.3/layer.js"></script>
 	<script type="text/javascript" src="js/H-ui.js"></script>
 	<script type="text/javascript" src="js/H-ui.admin.js"></script>
 	<script type="text/javascript">
+		var type;
 		$(function() {
+			var jsonData = {};
+			jsonData.id = getArgs("id");
+
+			$("#imgFile").fileupload({
+				url : '/ddl/data/upload',
+				sequentialUploads : true,
+				dataType : 'json',
+				formData : jsonData
+			}).bind('fileuploaddone', function(e, data) {
+				if (data.result.code == 200)
+					$("#img").attr("src", "/ddl/upload/" + data.result.content);
+			});
+
 			$.ajax({
 				url : "/ddl/data/get",
 				data : "id=" + getArgs("id"),
 				dataType : "json",
 				success : function(data) {
 					var data = data.data;
-					$("#key").val(data.key);
-					$("#value").val(data.value);
+					$("#key").val(data.name);
 					$("#adminId").val(data.adminId);
 					$("#addTime").val(data.addTime);
+					if (data.type == 2) {
+						$("td[class='ImgInput']").removeAttr("hidden");
+						$("td[class='textInput']").attr("hidden", "true");
+						$("#img").attr("src", "/ddl/" + data.value);
+						type=2;
+					} else if (data.type == 1) {
+						$("td[class='textInput']").removeAttr("hidden");
+						$("td[class='ImgInput']").attr("hidden", "true");
+						$("#value").val(data.value);
+						type=1;
+					}
 				},
 				error : function() {
 
 				}
 			});
 		});
-		
+
 		function submit() {
 			var jsonData = {};
 			jsonData.id = getArgs("id");
-			jsonData.key = $("#key").val();
-			jsonData.value = $("#value").val();
-			jsonData.adminId = $.cookie("adminId");
+			if(type == 1){
+				jsonData.value = $("#value").val();
+			}else{
+				var imgStr = $("#img").attr("src").split("/");
+				jsonData.value = "upload/" + imgStr[imgStr.length-1];
+			}
 			
+			jsonData.name = $("#key").val();
+			jsonData.adminId = $.cookie("adminId");
+
 			$.ajax({
 				url : "/ddl/data/update",
 				data : jsonData,
-				type:"POST",
+				type : "POST",
 				dataType : "json",
 				success : function(data) {
-					layer.msg('成功',{time:2000}, function(){
+					layer.msg('成功', {
+						time : 2000
+					}, function() {
 						parent.location.reload();
 						layer_close();
 					});
@@ -105,6 +146,9 @@
 
 				}
 			});
+		}
+		function changeAvatar() {
+			$("#imgFile").click();
 		}
 	</script>
 </body>

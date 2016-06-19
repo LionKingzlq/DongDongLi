@@ -14,18 +14,21 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
+import com.ddl.model.Data;
 import com.ddl.model.FAQ;
 import com.ddl.model.InstructionAddress;
 
 @Repository
 public class FAQDao extends BaseDao{
-
+	
 	public FAQ get(FAQ faq){
+		String sql = "SELECT * FROM FAQ LEFT JOIN (SELECT id, name as adminName FROM Admin)AS A ON FAQ.adminId = A.id WHERE FAQ.id=" + faq.getId();
 		try {
 			Session session = getSession();
 			session.beginTransaction();
-			FAQ object = (FAQ) session.get(FAQ.class, (faq).getId());
+			FAQ object = (FAQ) session.createSQLQuery(sql).addEntity(FAQ.class).list().get(0);
 			session.getTransaction().commit();
+			releaseSession(session);
 			return object;	
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -101,4 +104,27 @@ public class FAQDao extends BaseDao{
 		}
 		return result;
 	}
+	
+	public boolean update(FAQ faq) {
+		try {
+			Session session = getSession();
+			session.beginTransaction();
+			SQLQuery sqlQuery = session.createSQLQuery("UPDATE FAQ SET question = ?, answer=?, adminId =? WHERE FAQ.id=" + faq.getId());
+			
+			sqlQuery.setString(0, faq.getQuestion());
+			sqlQuery.setString(1, faq.getAnswer());
+			sqlQuery.setInteger(2, faq.getAdminId());
+			
+			int num = sqlQuery.executeUpdate();
+			session.getTransaction().commit();
+			releaseSession(session);
+			if(num != 0){
+				return true;
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return false;
+	}
+	
 }

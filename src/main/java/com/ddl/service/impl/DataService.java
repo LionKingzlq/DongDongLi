@@ -29,8 +29,16 @@ public class DataService extends BaseService implements IDataService{
 	}
 
 	@Override
-	public int saveAll(String filePath) {
-		return dataDao.saveAll(filePath);
+	public int saveAll(String filePath, int adminId) {
+		return dataDao.saveAll(filePath, adminId);
+	}
+	@Override
+	public boolean update(Object object) {
+		return dataDao.update((Data)object);
+	}
+	@Override
+	public boolean delete(Object object) {
+		return dataDao.delete((Data)object);
 	}
 
 }

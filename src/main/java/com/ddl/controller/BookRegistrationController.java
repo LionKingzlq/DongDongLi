@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.ddl.model.BookRegistration;
+import com.ddl.model.Teacher;
 import com.ddl.service.IBookRegistrationService;
 
 import net.sf.json.JSONObject;
@@ -25,7 +26,7 @@ public class BookRegistrationController {
 	public JSONObject add(BookRegistration BookRegistration){
 		JSONObject result = new JSONObject();
 		boolean flag = bookRegistrationService.save(BookRegistration);
-		result.put("data", flag);
+		result.put("flag", flag);
 		return result;
 	}
 	
@@ -66,5 +67,13 @@ public class BookRegistrationController {
 		return result;
 	}
 	
-	
+	@ResponseBody
+	@RequestMapping(value="/deleteMore",method = RequestMethod.POST)
+	public void deleteMore(int[] ids){
+		for (int id:ids) {
+			BookRegistration book = new BookRegistration();
+			book.setId(id);
+			bookRegistrationService.delete(book);
+		}
+	}
 }

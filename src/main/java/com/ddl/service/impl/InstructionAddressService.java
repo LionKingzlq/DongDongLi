@@ -40,5 +40,12 @@ public class InstructionAddressService extends BaseService implements IInstructi
 	public int saveAll(String filePath) {
 		return instructionAddressDao.saveAll(filePath);
 	}
-	
+	@Override
+	public boolean delete(Object object) {
+		return instructionAddressDao.delete((InstructionAddress)object);
+	}
+	@Override
+	public boolean update(Object object) {
+		return instructionAddressDao.update((InstructionAddress)object);
+	}
 }

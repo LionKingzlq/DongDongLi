@@ -15,8 +15,8 @@ public class Data {
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="key")
-	private String key;
+	@Column(name="name")
+	private String name;
 	
 	@Column(name="value")
 	private String value;
@@ -54,12 +54,13 @@ public class Data {
 		this.id = id;
 	}
 
-	public String getKey() {
-		return key;
+
+	public String getName() {
+		return name;
 	}
 
-	public void setKey(String key) {
-		this.key = key;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getValue() {

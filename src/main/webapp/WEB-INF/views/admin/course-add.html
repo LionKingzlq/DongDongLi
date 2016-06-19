@@ -1,5 +1,4 @@
-<!DOCTYPE html(>
-<html(>
+<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
@@ -28,18 +27,53 @@
 			<tbody>
 				<tr>
 					<th class="text-r" width="80">学区名：</th>
-					<td><input id="name" type="text" class="input-text"
+					<td><input id="addressId" type="text" class="input-text"
 						value="" placeholder="" /></td>
 				</tr>
 				<tr>
-					<th class="text-r">地址：</th>
-					<td ><input id="location" type="text" class="input-text"
+					<th class="text-r">年级：</th>
+					<td ><input id="grade" type="text" class="input-text"
 						value="" placeholder=""/></td>
 				</tr>
 				<tr>
-					<th class="text-r">联系方式:</th>
-					<td ><input id="phone" type="text" class="input-text"
+					<th class="text-r">开课时间:</th>
+					<td ><input id="startTime" type="text" class="input-text"
 						value="" placeholder="" /></td>
+				</tr>
+				<tr>
+					<th class="text-r" width="80">具体时间：</th>
+					<td><input id="classDay" type="text" class="input-text"
+						value="" placeholder="" /></td>
+				</tr>
+				<tr>
+					<th class="text-r">上课时间：</th>
+					<td ><input id="classTime" type="text" class="input-text"
+						value="" placeholder=""/></td>
+				</tr>
+				<tr>
+					<th class="text-r">班次:</th>
+					<td ><input id="type" type="text" class="input-text"
+						value="" placeholder="" /></td>
+				</tr>
+				<tr>
+					<th class="text-r" width="80">教师：</th>
+					<td><input id="teacher" type="text" class="input-text"
+						value="" placeholder="" /></td>
+				</tr>
+				<tr>
+					<th class="text-r">科目：</th>
+					<td ><input id="className" type="text" class="input-text"
+						value="" placeholder=""/></td>
+				</tr>
+				<tr>
+					<th class="text-r">课次:</th>
+					<td ><input id="times" type="text" class="input-text"
+						value="" placeholder="" /></td>
+				</tr>
+				<tr>
+					<th class="text-r">教室：</th>
+					<td><input id="classRoom" type="text" class="input-text"
+						value="" placeholder="" readonly="readonly" /></td>
 				</tr>
 				<tr>
 					<th class="text-r">添加者：</th>
@@ -72,16 +106,23 @@
 	<script type="text/javascript">
 		$(function() {
 			$.ajax({
-				url : "/ddl/address/get",
+				url : "/ddl/course/get",
 				data : "id=" + getArgs("id"),
 				dataType : "json",
 				success : function(data) {
-					var address = data.address;
-					$("#name").val(address.name);
-					$("#location").val(address.location);
-					$("#phone").val(address.phone);
-					$("#adminId").val(address.adminId);
-					$("#addTime").val(address.addTime);
+					var course = data.course;
+					$("#addressId").val(course.addressId);
+					$("#grade").val(course.grade);
+					$("#startTime").val(course.startTime);
+					$("#classDay").val(course.classDay);
+					$("#classTime").val(course.classTime);
+					$("#type").val(course.type);
+					$("#teacher").val(course.teacher);
+					$("#className").val(course.className);
+					$("#times").val(course.times);
+					$("#classRoom").val(course.classRoom);
+					$("#adminId").val(course.adminId);
+					$("#addTime").val(course.addTime);
 				},
 				error : function() {
 
@@ -92,21 +133,33 @@
 		function submit() {
 			var jsonData = {};
 			jsonData.id = getArgs("id");
-			jsonData.name = $("#name").val();
-			jsonData.location = $("#location").val();
-			jsonData.phone = $("#phone").val();
+			jsonData.addressId = $("#addressId").val();
+			jsonData.grade = $("#grade").val();
+			jsonData.startTime = $("#startTime").val();
+			jsonData.classDay = $("#classDay").val();
+			jsonData.classTime = $("#classTime").val();
+			jsonData.type = $("#type").val();
+			jsonData.teacher = $("#teacher").val();
+			jsonData.className = $("#className").val();
+			jsonData.times = $("#times").val();
+			jsonData.classRoom = $("#classRoom").val();
 			jsonData.adminId = $.cookie("adminId");
 			
 			$.ajax({
-				url : "/ddl/address/update",
+				url : "/ddl/course/update",
 				data : jsonData,
 				type:"POST",
 				dataType : "json",
 				success : function(data) {
-					layer.msg('成功',{time:2000}, function(){
-						parent.location.reload();
-						layer_close();
-					});
+					if(data.flag){
+						layer.msg('成功',{time:2000}, function(){
+							parent.location.reload();
+							layer_close();
+						});
+					}else{
+						layer.msg('失败，请重试',{time:2000});
+					}
+					
 				},
 				error : function() {
 

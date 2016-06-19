@@ -15,14 +15,13 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import com.ddl.model.Course;
-import com.ddl.model.FAQ;
 
 @Repository(value="courseDao")
 public class CourseDao extends BaseDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Course> getAllCourse() {
-		String sql = "select * from Course LEFT JOIN (SELECT id AS adminId, name as adminName FROM Admin) AS A ON Course.adminId=A.adminId order by addressId";
+		String sql = "select * from Course LEFT JOIN (SELECT id AS adminId, name as adminName FROM Admin) AS A ON Course.adminId=A.adminId order by id";
 		try {
 			Session session = getSession();
 			session.beginTransaction();
@@ -83,7 +82,7 @@ public class CourseDao extends BaseDao {
 				for (int j = 1; j < sheet.getLastRowNum() + 1; j++) {
 					Row row = sheet.getRow(j);
 					
-					SQLQuery sqlQuery = session.createSQLQuery("INSERT INTO Course (addressId, grade, startTime, classDay, classTime, teacher, type, className, classRoom, adminId) VALUES (?,?,?,?,?,?,?,?,?,?)");
+					SQLQuery sqlQuery = session.createSQLQuery("INSERT INTO Course (addressId, grade, startTime, classDay, classTime, teacher, type, className, classRoom, times, adminId) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 					
 					sqlQuery.setInteger(0, (int) row.getCell(0).getNumericCellValue());
 					sqlQuery.setString(1, row.getCell(1).getStringCellValue());
@@ -95,6 +94,7 @@ public class CourseDao extends BaseDao {
 					sqlQuery.setString(7, row.getCell(7).getStringCellValue());
 					sqlQuery.setString(8, row.getCell(8).getStringCellValue());
 					sqlQuery.setInteger(9, (int) row.getCell(9).getNumericCellValue());
+					sqlQuery.setInteger(10, (int) row.getCell(10).getNumericCellValue());
 					
 					sqlQuery.addEntity(Course.class);
 					result += sqlQuery.executeUpdate();
@@ -111,5 +111,34 @@ public class CourseDao extends BaseDao {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	public Boolean update(Course course) {
+		try {
+			Session session = getSession();
+			session.beginTransaction();
+			SQLQuery sqlQuery = session.createSQLQuery("UPDATE Course SET addressId=?, grade=?, startTime=?, classDay=?, classTime=?, teacher=?, type=?, className=?, classRoom=?, adminId=?  WHERE Course.id=" + course.getId());
+			
+			sqlQuery.setInteger(0, course.getAddressId());
+			sqlQuery.setString(1, course.getGrade());
+			sqlQuery.setString(2, course.getStartTime());
+			sqlQuery.setString(3, course.getClassDay());
+			sqlQuery.setString(4, course.getClassTime());
+			sqlQuery.setString(5, course.getTeacher());
+			sqlQuery.setString(6, course.getType());
+			sqlQuery.setString(7, course.getClassName());
+			sqlQuery.setString(8, course.getClassRoom());
+			sqlQuery.setInteger(9, course.getAdminId());
+			
+			int num = sqlQuery.executeUpdate();
+			session.getTransaction().commit();
+			releaseSession(session);
+			if(num > 0){
+				return true;
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return false;
 	}
 }

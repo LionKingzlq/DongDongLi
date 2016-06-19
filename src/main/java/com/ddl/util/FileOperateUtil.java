@@ -43,7 +43,7 @@ public class FileOperateUtil {
 			MultipartFile mFile = entry.getValue();
 			if (mFile.getSize() != 0 && !"".equals(mFile.getName())) {
 				deleteFile(filePath);
-				filePath = FILEDIR + "/" + filePath;
+				filePath = FILEDIR + filePath;
 				write(mFile.getInputStream(), new FileOutputStream(filePath));
 			}
 		}

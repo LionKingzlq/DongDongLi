@@ -22,9 +22,14 @@
 	language="javascript"></script>
 <script src="<c:url value="/res/js/bootstrap.js"/>"
 	language="javascript"></script>
+<style type="text/css">
+.c-red{
+	color:red;	
+} 
+</style>
 </head>
 
-<body style="margin-left: -35px;">
+<body style="">
 	<%--header--%>
 	<%@ include file="header.jsp"%>
 	<script>
@@ -32,12 +37,12 @@
 			if (window.screen.availWidth < 800) {
 				window.location.href = "book2";
 			} else {
-				document.documentElement.style.overflowX = 'hidden';
+				/* document.documentElement.style.overflowX = 'hidden';
 				var r = document.body.offsetWidth / window.screen.availWidth;
 				if (r > 1)
 					$(document.body).css({
 						"-webkit-transform" : "scaleX(" + 0.93 + ")"
-					});
+					}); */
 
 				$("#comfirmBtn").click(function() {
 					$("#applyForm").submit();
@@ -95,9 +100,9 @@
 					type : 'post',
 					data : data,
 					dataType : 'json',
-
-					success : function() {
-						alert("成功添加，请继续");
+					success : function(data) {
+						if(data.flag)
+							alert("成功添加，请继续");
 					}
 				});
 			}
@@ -112,8 +117,7 @@
 		<div class="left-form">
 			<div style="margin-left: 170px; margin-top: 10px">课程费用：120元/小时</div>
 			<div style="margin-left: 170px">班级人数上限：10人</div>
-			<form id="applyForm" class="applyForm" method="post"
-				action="/teacher">
+			<form id="applyForm" class="applyForm" method="post">
 				<div class="form-context">
 					<label for="campus"><span class="c-red">*</span>校区:</label> <select
 						id="campus" name="campus" type="text">
@@ -133,7 +137,7 @@
 					</select>
 				</div>
 				<div class="form-context">
-					<label for="teacherName"><span class="c-red">*</span>教师姓名:</label>
+					<label for="teacherName">教师姓名:</label>
 					<input id="teacherName" name="teacherName" type="text"
 						placeholder="教师姓名">
 				</div>
@@ -143,21 +147,20 @@
 						placeholder="学生姓名">
 				</div>
 				<div class="form-context">
-					<label for="parentName">家长姓名:</label> <input id="parentName"
+					<label for="parentName"><span class="c-red">*</span>家长姓名:</label> <input id="parentName"
 						name="parentName" type="text" placeholder="家长姓名">
 				</div>
 				<div class="form-context">
-					<label for="parentPhone">家长电话:</label> <input id="parentPhone"
+					<label for="parentPhone"><span class="c-red">*</span>家长电话:</label> <input id="parentPhone"
 						name="parentPhone" type="text" placeholder="家长电话">
 				</div>
 				<div class="form-context">
 					<label for="studentId">学生身份证号:</label> <input id="studentID"
-						name="studentId" type="text" placeholder="studentId">
+						name="studentId" type="text" placeholder="学生身份证号">
 				</div>
 			</form>
 			<div class="formBtn">
-				<a class="a-btn" style="float: left"> <img id="comfirmBtn"
-					class="comfirmBtn" src="<c:url value="/res/images/apply/6.png"/>">
+				<a class="a-btn" onclick="add();" style="float: left"> <img id="comfirmBtn" src="<c:url value="/res/images/apply/6.png"/>">
 				</a> <a class="a-btn" type="reset" style="float: right"> <img
 					id="clearBtn" class="clearBtn"
 					src="<c:url value="/res/images/apply/7.png"/>">

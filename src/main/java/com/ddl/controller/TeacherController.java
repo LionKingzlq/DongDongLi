@@ -54,7 +54,7 @@ public class TeacherController {
 		teacher.setId(id);
 		
 		Teacher result = (Teacher) teacherService.get(teacher);
-		model.addAttribute("wang", result);
+		model.addAttribute("teacher", result);
 		String[] mottoes = result.getMotto().split("#");
 		model.addAttribute("mottoes", mottoes);
 		model.addAttribute("flag", mottoes.length > 1 ? true : false);

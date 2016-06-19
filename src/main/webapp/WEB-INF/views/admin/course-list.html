@@ -49,7 +49,7 @@
 			<span class="l"> <a href="javascript:;" onclick="datadel()"
 				class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i>
 					批量删除</a> <a href="javascript:;"
-				onclick="member_add('批量添加','member-add-list.html','','510')"
+				onclick="member_add('批量添加','course-add-list.html','','510')"
 				class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i>
 					批量添加</a>
 			</span> <span class="r">共有数据：<strong>88</strong> 条
@@ -60,7 +60,7 @@
 				class="table table-border table-bordered table-hover table-bg table-sort">
 				<thead>
 					<tr class="text-c">
-						<th width="25"><input type="checkbox" name="" value=""></th>
+						<th width="25"><input type="checkbox" name="" value="-1"></th>
 						<th width="40">ID</th>
 						<th width="80">学区名</th>
 						<th width="60">年级</th>
@@ -111,7 +111,7 @@
 							for (x in courses) {
 								var course = courses[x];
 
-								var tdSelect = "<td><input type='checkbox' value='1' name=''></td>";
+								var tdSelect = "<td><input type='checkbox' value='"+ course['id'] +"' name=''></td>";
 								var tdId = "<td>" + course['id'] + "</td>";
 								var tdAddressId = "<td>" + course['addressId'] + "</td>";
 								var tdGrade = "<td>" + course['grade'] + "</td>";
@@ -184,8 +184,10 @@
 		
 		function datadel(){
 			var data =[]; 
-			$("input:checkbox:checked").each(function(){ 
-				data.push($(this).val()); 
+			$("input:checkbox:checked").each(function(){
+				if($(this).val() > -1){
+					data.push($(this).val()); 
+				}
 			});
 			$.ajax({
 				url : "/ddl/course/deleteMore",

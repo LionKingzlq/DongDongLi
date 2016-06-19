@@ -39,4 +39,8 @@ public class TeacherService extends BaseService implements ITeacherService {
 	public boolean update(Object object) {
 		return teacherDao.update((Teacher)object);
 	}
+	@Override
+	public boolean delete(Object object) {
+		return teacherDao.delete((Teacher)object);
+	}
 }

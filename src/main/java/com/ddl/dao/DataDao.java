@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ddl.model.Data;
 import com.ddl.model.FAQ;
+import com.ddl.model.Teacher;
 
 @Repository
 public class DataDao extends BaseDao{
@@ -49,7 +50,26 @@ public class DataDao extends BaseDao{
 		}
 		return null;
 	}
-	
+	public boolean update(Data data) {
+		try {
+			Session session = getSession();
+			session.beginTransaction();
+			SQLQuery sqlQuery = session.createSQLQuery("UPDATE Data SET value = ?, adminId =? WHERE Data.id="+data.getId());
+			
+			sqlQuery.setString(0, data.getValue());
+			sqlQuery.setInteger(1, data.getAdminId());
+			
+			int num = sqlQuery.executeUpdate();
+			session.getTransaction().commit();
+			releaseSession(session);
+			if(num != 0){
+				return true;
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return false;
+	}
 	public boolean delete(Data data) {
 		try {
 			Session session = getSession();
@@ -67,14 +87,13 @@ public class DataDao extends BaseDao{
 		return false;
 	}
 	
-	public int saveAll(String filePath) {
+	public int saveAll(String filePath, int adminId) {
 		int result = 0;
 		if (!filePath.endsWith(".xlsx") && !filePath.endsWith(".xls")) {
 			return result;
 		}
 		try {
 			Session session = getSession();
-			session.beginTransaction();
 			
 			Workbook workbook = WorkbookFactory.create(new File(filePath));
 			for (int i = 0; i < workbook.getNumberOfSheets(); i++) {
@@ -82,19 +101,16 @@ public class DataDao extends BaseDao{
 				for (int j = 1; j < sheet.getLastRowNum() + 1; j++) {
 					Row row = sheet.getRow(j);
 					
-					SQLQuery sqlQuery = session.createSQLQuery("INSERT INTO Data (key, value, type, adminId) VALUES (?,?,?,?)");
+					SQLQuery sqlQuery = session.createSQLQuery("INSERT INTO Data (name, value, type, adminId) VALUES (?,?,?,?)");
 					
 					sqlQuery.setString(0, row.getCell(0).getStringCellValue());
 					sqlQuery.setString(1, row.getCell(1).getStringCellValue());
 					sqlQuery.setInteger(2, (int) row.getCell(2).getNumericCellValue());
-					sqlQuery.setInteger(3, (int) row.getCell(3).getNumericCellValue());
-					
-					sqlQuery.addEntity(FAQ.class);
+					sqlQuery.setInteger(3, adminId);
 					
 					result += sqlQuery.executeUpdate();
 				}
 			}
-			session.getTransaction().commit();
 			releaseSession(session);
 			
 		} catch (EncryptedDocumentException e) {

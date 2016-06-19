@@ -28,5 +28,4 @@ public class BookRegistrationService extends BaseService implements IBookRegistr
 		return bookRegistrationDao.getAll();
 	}
 
-	
 }

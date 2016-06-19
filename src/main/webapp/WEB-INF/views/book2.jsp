@@ -82,9 +82,9 @@ form div {
 					type : 'post',
 					data : data,
 					dataType : 'json',
-
-					success : function() {
-						alert("成功添加，请继续");
+					success : function(data) {
+						if(data.flag)
+							alert("成功添加，请继续");
 					}
 				});
 			}

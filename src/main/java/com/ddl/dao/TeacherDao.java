@@ -143,15 +143,14 @@ public class TeacherDao extends BaseDao {
 				for (int j = 1; j < sheet.getLastRowNum() + 1; j++) {
 					Row row = sheet.getRow(j);
 					
-					SQLQuery sqlQuery = session.createSQLQuery("INSERT INTO Teacher (name, motto, position, honour, imgPath, content, adminId) VALUES (?,?,?,?,?,?,?)");
+					SQLQuery sqlQuery = session.createSQLQuery("INSERT INTO Teacher (name, motto, position, honour, content, adminId) VALUES (?,?,?,?,?,?)");
 					
 					sqlQuery.setString(0, row.getCell(0).getStringCellValue());
 					sqlQuery.setString(1, row.getCell(1).getStringCellValue());
 					sqlQuery.setString(2, row.getCell(2).getStringCellValue());
 					sqlQuery.setString(3, row.getCell(3).getStringCellValue());
 					sqlQuery.setString(4, row.getCell(4).getStringCellValue());
-					sqlQuery.setString(5, row.getCell(5).getStringCellValue());
-					sqlQuery.setInteger(6, (int) row.getCell(6).getNumericCellValue());
+					sqlQuery.setInteger(5, (int) row.getCell(5).getNumericCellValue());
 					
 					sqlQuery.addEntity(Teacher.class);
 					

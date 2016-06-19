@@ -32,5 +32,13 @@ public class FAQService extends BaseService implements IFAQService{
 	public int saveAll(String filePath) {
 		return faqDao.saveAll(filePath);
 	}
-
+	
+	@Override
+	public boolean update(Object object) {
+		return faqDao.update((FAQ)object);
+	}
+	@Override
+	public boolean delete(Object object) {
+		return faqDao.delete((FAQ)object);
+	}
 }

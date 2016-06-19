@@ -96,10 +96,18 @@
 				type:"POST",
 				dataType : "json",
 				success : function(data) {
-					layer.msg('成功',{time:2000}, function(){
-						parent.location.reload();
-						layer_close();
-					});
+					if(data.flag){
+						layer.msg('成功',{time:2000}, function(){
+							parent.location.reload();
+							layer_close();
+						});
+					}else{
+						layer.msg('失败请重试',{time:2000}, function(){
+							parent.location.reload();
+							layer_close();
+						});
+					}
+					
 				},
 				error : function() {
 
