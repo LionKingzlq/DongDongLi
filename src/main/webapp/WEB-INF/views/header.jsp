@@ -10,11 +10,9 @@
 <style>
     html, body {
         position:relative;
-        width: 100%;
+        width: 1276px;
         margin: 0 auto;
         padding: 0px;
-        margin-right: auto;
-        margin-left: auto;
         overflow-x: auto;
         text-align: center;
         font-family: "Microsoft YaHei",monospace;
@@ -32,7 +30,7 @@
     .header-right form a .book{position: relative;height: 33px;margin-left: 17px;margin-left: -100px}
     .header-right .navlist .tabActive {
         color: rgb(143, 194, 31);
-        font-size: 25px;
+        font-size: 22px;
         font-weight: 500;
     }
     .header-right .navlist {position: relative;font-size: 15px;text-align: left;margin-top: 25px;}

@@ -39,17 +39,22 @@
 	</script>
 
 	<div class="sc">
-		<div class="indexPic">
-			<img src="<c:url value="/res/images/index/1.png"/> ">
-		</div>
+		<!-- <div class="indexPic">
+			
+		</div> -->
 		<div class="motto"
 			style="background: url(<c:url value="/res/images/index/2.png"/>);">
-			<div class="tname">栋栋梨教育</div>
-			<div class="ttitle">带你走向更精彩的未来</div>
-			<div class="tintro">
-				栋栋梨的教育宗旨是让每一个学生的名字都充满神圣和庄严。栋栋梨不仅注重学习习惯和学习能力的培养，更注重学生人格的塑造。在栋栋梨，每一个学生的闪光点都会得到赞扬，每一个学生的潜能都会得到发掘。
+			<img src="<c:url value="/res/images/index/1.png"/>"
+				style="position: absolute; left: 0;">
+			<div style="float: right; width: 500px;">
+				<div class="tname">栋栋梨教育</div>
+				<div class="ttitle">带你走向更精彩的未来</div>
+				<div class="tintro">
+					栋栋梨的教育宗旨是让每一个学生的名字都充满神圣和庄严。栋栋梨不仅注重学习习惯和学习能力的培养，更注重学生人格的塑造。在栋栋梨，每一个学生的闪光点都会得到赞扬，每一个学生的潜能都会得到发掘。
+				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<div class="teacher">
 		<div class="teacherIco">
@@ -57,15 +62,25 @@
 
 			<div>名师风采</div>
 		</div>
-		<div class="teacherIntro"
-			style="">
-			<img src="<c:url value="/res/images/index/4.png"/>">
-
-			<div class="name">
-				王老师
-				<text>五年教龄的优秀老师</text>
+		<div>
+			<div class="teacherIntro" style="">
+				<img src="<c:url value="/res/images/index/wangjiadong.png"/>">
+				<div class="name">
+					王老师
+					<text style="color: rgb(230, 170, 80);">五年教龄的优秀老师</text>
+				</div>
+				<div class="slo">培养习惯，塑造人格</div>
 			</div>
-			<div class="slo">培养习惯，塑造人格</div>
+			<div class="teacherIntro"
+				style="background-color: #c6e484; margin-top: 10px;">
+				<img src="<c:url value="/res/images/index/lihao.png"/>">
+
+				<div class="name">
+					大梨老师
+					<text style="color:#acd455">踏实严谨的教学风格</text>
+				</div>
+				<div class="slo">培养习惯，塑造人格</div>
+			</div>
 		</div>
 	</div>
 	<div class="hbr">
@@ -161,7 +176,7 @@
 		$(function() {
 
 			/* document.documentElement.style.overflowX = 'hidden'; */
-			var r =  document.body.offsetWidth / window.screen.availWidth;
+			var r = document.body.offsetWidth / window.screen.availWidth;
 			/* if(r > 1)
 				$(document.body).css({"-webkit-transform":"scaleX(" + 0.93 + ")"}); */
 		});

@@ -36,11 +36,15 @@
 </script>
 
 <div class="bg" style="background-image: url(/ddl/res/images/contact/4.png); background-size: 100% 100%;">
-  <div style="width: 450px;height: 754px;float: left">
-    <div style="width: 380px;height: 674px;margin-top:80px;margin-left: auto;margin-right: auto">
+  <div style="width: 35%;height: 754px; position:absolute;">
+    <div style="width: 90%;height: 674px;margin-top:60px;margin-left: auto;margin-right: auto">
       <div class="tx-hd">各校区</div>
       <div class="tx-shd">地址及联系方式</div>
-      <div class="add-qu" style="margin-top: 80px">浦东新区|</div>
+      <div>
+      	<div style="background-color: #4c4c4c; color:#ffffff; width:130px; font-size: 2em;">咨询电话</div>
+      	<div style="text-align:left; font-size:2.5em;">021-67182152</div>
+      </div>
+      <div class="add-qu" style="margin-top: 50px">浦东新区|</div>
       <div class="add-det">杨高中路2797号3号楼联洋市民中心8楼</div>
       <div class="add-qu">虹口区|</div>
       <div class="add-det">物华路73号渡边物花园4层</div>
@@ -53,7 +57,7 @@
       <div class="add-det">八字桥路215号</div>
     </div>
   </div>
-  <div style="width: 60%;float: left">
+  <div style="width: 60%;float: right;">
     <div style="width: 700px;height: 150px;margin-left: auto;margin-right: auto;margin-top: 80px">
       <div class="tx-sys">扫一扫</div>
       <div class="tx-dt">时刻关注最新动态</div>
@@ -70,6 +74,7 @@
     </div>
   </div>
 </div>
+
 <div class="bpic" style="background-image: url(/ddl/res/images/contact/5.png); background-size: 100% 100%;"></div>
 
 <%--footer--%>

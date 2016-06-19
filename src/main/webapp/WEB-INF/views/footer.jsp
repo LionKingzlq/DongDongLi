@@ -28,9 +28,9 @@
         <a>其他</a>
       </div>
     </div>
-    <div style="position: relative;height: 30px;width: 780px;border: groove 0px rgb(52, 52, 52);
-                    color: #ffffff;margin-left: auto;margin-right: auto">
-      copyright © 2016-2066 Dongdongli.All Rights Reserved.上海栋栋梨教育投资有限公司版权所有
+    <div style="position: relative;height: 60px;width: 780px;border: groove 0px rgb(52, 52, 52);
+                    color: #ffffff;margin-left: auto;margin-right: auto;">
+      copyright © 2016-2066 Dongdongli.All Rights Reserved.<br/>上海栋栋梨教育投资有限公司版权所有
     </div>
   </div>
   <div style="float:left;width: 30%;height: 100%;">
