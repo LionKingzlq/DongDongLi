@@ -22,20 +22,20 @@
   <script src="<c:url value="/res/js/bootstrap.js"/>" language="javascript"></script>
 </head>
 
-<body style="margin-left: -35px;">
+<body style="">
 <%--header--%>
 <%@ include file="header.jsp" %>
 
 <script>
   $('.navlist').children(":first").next().next().next().next().addClass('tabActive');
   
-  document.documentElement.style.overflowX = 'hidden';
+/*   document.documentElement.style.overflowX = 'hidden';
 	var r =  document.body.offsetWidth / window.screen.availWidth;
 	if(r > 1)
-		$(document.body).css({"-webkit-transform":"scaleX(" + 0.93 + ")"});
+		$(document.body).css({"-webkit-transform":"scaleX(" + 0.93 + ")"}); */
 </script>
 
-<div class="bg" style="background: url(<c:url value="/res/images/contact/4.png"/>)">
+<div class="bg" style="background-image: url(/ddl/res/images/contact/4.png); background-size: 100% 100%;">
   <div style="width: 450px;height: 754px;float: left">
     <div style="width: 380px;height: 674px;margin-top:80px;margin-left: auto;margin-right: auto">
       <div class="tx-hd">各校区</div>
@@ -53,7 +53,7 @@
       <div class="add-det">八字桥路215号</div>
     </div>
   </div>
-  <div style="width: 899px;height: 754px;float: left">
+  <div style="width: 60%;float: left">
     <div style="width: 700px;height: 150px;margin-left: auto;margin-right: auto;margin-top: 80px">
       <div class="tx-sys">扫一扫</div>
       <div class="tx-dt">时刻关注最新动态</div>
@@ -70,7 +70,7 @@
     </div>
   </div>
 </div>
-<div class="bpic" style="background: url(<c:url value="/res/images/contact/5.png"/>)"></div>
+<div class="bpic" style="background-image: url(/ddl/res/images/contact/5.png); background-size: 100% 100%;"></div>
 
 <%--footer--%>
 <%@ include file="footer.jsp" %>

@@ -35,13 +35,32 @@ public class TeacherController {
 	
 	@RequestMapping(value="")
 	public String teacherPage(Model model) {
+		
 		Teacher teacher = new Teacher();
 		teacher.setId(1);
 		
-		model.addAttribute("wang", teacherService.get(teacher));
-		model.addAttribute("teachers", teacherService.getAll());
+		Teacher result = (Teacher) teacherService.get(teacher);
+		model.addAttribute("wang", result);
+		String[] mottoes = result.getMotto().split("#");
+		model.addAttribute("mottoes", mottoes);
+		model.addAttribute("flag", mottoes.length > 1 ? true : false);
 		return "teacher";
 	}
+	
+	@RequestMapping(value="/detail")
+	public String teacherPage(Model model, int id) {
+		
+		Teacher teacher = new Teacher();
+		teacher.setId(id);
+		
+		Teacher result = (Teacher) teacherService.get(teacher);
+		model.addAttribute("wang", result);
+		String[] mottoes = result.getMotto().split("#");
+		model.addAttribute("mottoes", mottoes);
+		model.addAttribute("flag", mottoes.length > 1 ? true : false);
+		return "teacher";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value="teachersInPage", method = RequestMethod.GET)
 	public JSONObject getAllTeachers(int pageNum){

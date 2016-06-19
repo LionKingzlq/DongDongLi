@@ -28,42 +28,81 @@
 	<%--header--%>
 	<%@ include file="header.jsp"%>
 	<script>
-    $(function () {
-    	if(window.screen.availWidth < 800){
-    		window.location.href="book2";
-    	}
-    	else{
-	    	document.documentElement.style.overflowX = 'hidden';
-			var r =  document.body.offsetWidth / window.screen.availWidth;
-			if(r > 1)
-				$(document.body).css({"-webkit-transform":"scaleX(" + 0.93 + ")"});
-	    	
-	        $("#comfirmBtn").click(function () {
-	            $("#applyForm").submit();
-	        });
-	        $("#clearBtn").click(function () {
-	            document.getElementById('applyForm').reset();
-	        });
-    	}
-    });
-    $(function () {
-        var campus = ['奉贤八字桥路校区','杨浦新江湾校区','虹口物华路校区','浦东联洋校区','卢湾校区']
-        var grades = ['一年级','二年级','三年级','四年级','五年级','六年级','七年级','八年级','九年级']
-        var classes = ['数学']
-        var cmp = document.getElementById('campus')
-        var gd = document.getElementById('grade')
-        var cls = document.getElementById('class')
-        for(var i = 0;i<campus.length;i++) {
-            $("<option value='" + campus[i] + "'>" + campus[i] + "</option>").appendTo(cmp);
-        }
-        for(var i = 0;i<grades.length;i++) {
-            $("<option value='" + grades[i] + "'>" + grades[i] + "</option>").appendTo(gd);
-        }
-        for(var i = 0;i<classes.length;i++) {
-            $("<option value='" + classes[i] + "'>" + classes[i] + "</option>").appendTo(cls);
-        }
-        });
-</script>
+		$(function() {
+			if (window.screen.availWidth < 800) {
+				window.location.href = "book2";
+			} else {
+				document.documentElement.style.overflowX = 'hidden';
+				var r = document.body.offsetWidth / window.screen.availWidth;
+				if (r > 1)
+					$(document.body).css({
+						"-webkit-transform" : "scaleX(" + 0.93 + ")"
+					});
+
+				$("#comfirmBtn").click(function() {
+					$("#applyForm").submit();
+				});
+				$("#clearBtn").click(function() {
+					document.getElementById('applyForm').reset();
+				});
+			}
+		});
+		$(function() {
+			var campus = [ '奉贤八字桥路校区', '杨浦新江湾校区', '虹口物华路校区', '浦东联洋校区', '卢湾校区' ]
+			var grades = [ '一年级', '二年级', '三年级', '四年级', '五年级', '六年级', '七年级',
+					'八年级', '九年级' ]
+			var classes = [ '数学' ]
+			var cmp = document.getElementById('campus')
+			var gd = document.getElementById('grade')
+			var cls = document.getElementById('class')
+			for (var i = 0; i < campus.length; i++) {
+				$(
+						"<option value='" + campus[i] + "'>" + campus[i]
+								+ "</option>").appendTo(cmp);
+			}
+			for (var i = 0; i < grades.length; i++) {
+				$(
+						"<option value='" + grades[i] + "'>" + grades[i]
+								+ "</option>").appendTo(gd);
+			}
+			for (var i = 0; i < classes.length; i++) {
+				$(
+						"<option value='" + classes[i] + "'>" + classes[i]
+								+ "</option>").appendTo(cls);
+			}
+		});
+		function add() {
+			var data = {};
+			data.campus = $("#campus").find("option:selected").val();
+			data.grade = $("#grade").find("option:selected").val();
+			data['course'] = $("#class").find("option:selected").val();
+			data['teacher'] = $("#teacher").val();
+			data['studentName'] = $("#studentName").val();
+			data['parentName'] = $("#parentName").val();
+			data['parentPhone'] = $("#parentPhone").val();
+			data['studentId'] = $("#studentId").val();
+
+			var re = /^(13[0-9]{9})|(15[089][0-9]{8})$/;
+			if (!re.test(data.parentPhone)) {
+				alert("手机号不正确");
+			} else if (data.campus == '0' || data.grade == '0'
+					|| data.course == '0' || data.studentName == ''
+					|| data.parentName == '') {
+				alert("标红为不填写，不能为空");
+			} else {
+				$.ajax({
+					url : "/ddl/book/add",
+					type : 'post',
+					data : data,
+					dataType : 'json',
+
+					success : function() {
+						alert("成功添加，请继续");
+					}
+				});
+			}
+		}
+	</script>
 
 	<div class="bigPic">
 		<img src="<c:url value="/res/images/apply/3.png"/>">
@@ -76,42 +115,44 @@
 			<form id="applyForm" class="applyForm" method="post"
 				action="/teacher">
 				<div class="form-context">
-					<label for="campus">校区:</label> <select id="campus" name="campus"
-						type="text">
+					<label for="campus"><span class="c-red">*</span>校区:</label> <select
+						id="campus" name="campus" type="text">
 						<option>----请选择校区----</option>
 					</select>
 				</div>
 				<div class="form-context">
-					<label for="grade">年级:</label> <select id="grade" name="grade"
-						type="text">
+					<label for="grade"><span class="c-red">*</span>年级:</label> <select
+						id="grade" name="grade" type="text">
 						<option>----请选择年级----</option>
 					</select>
 				</div>
 				<div class="form-context">
-					<label for="campus">科目:</label> <select id="class" name="class"
-						type="text">
+					<label for="class"><span class="c-red">*</span>科目:</label> <select
+						id="class" name="class" type="text">
 						<option>----请选择科目----</option>
 					</select>
 				</div>
 				<div class="form-context">
-					<label for="teacherName">教师姓名:</label> <input id="teacherName"
-						name="teacherName" type="text" placeholder="教师姓名">
+					<label for="teacherName"><span class="c-red">*</span>教师姓名:</label>
+					<input id="teacherName" name="teacherName" type="text"
+						placeholder="教师姓名">
 				</div>
 				<div class="form-context">
-					<label for="studentName">学生姓名:</label> <input id="studentName"
-						name="studentName" type="text" placeholder="学生姓名">
+					<label for="studentName"><span class="c-red">*</span>学生姓名:</label>
+					<input id="studentName" name="studentName" type="text"
+						placeholder="学生姓名">
 				</div>
 				<div class="form-context">
-					<label for="campus">家长姓名:</label> <input id="parentName"
+					<label for="parentName">家长姓名:</label> <input id="parentName"
 						name="parentName" type="text" placeholder="家长姓名">
 				</div>
 				<div class="form-context">
-					<label for="campus">家长电话:</label> <input id="parentPhone"
+					<label for="parentPhone">家长电话:</label> <input id="parentPhone"
 						name="parentPhone" type="text" placeholder="家长电话">
 				</div>
 				<div class="form-context">
-					<label for="campus">学生身份证号:</label> <input id="studentID"
-						name="studentID" type="text" placeholder="学生身份证号">
+					<label for="studentId">学生身份证号:</label> <input id="studentID"
+						name="studentId" type="text" placeholder="studentId">
 				</div>
 			</form>
 			<div class="formBtn">

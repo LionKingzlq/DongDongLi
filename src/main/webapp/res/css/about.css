@@ -1,23 +1,113 @@
-body{margin-left: -30px;}
-.pic{width: 1349px;height: auto;margin-right: auto;margin-left: auto;}
+body {
+	margin-left: -30px;
+}
 
-.aboutDDL{width: 1349px;height: 550px;margin-right: auto;margin-left: auto;text-align: left}
-.ab-con{width: 1200px;height: 400px;margin-right: auto;margin-left: auto;text-align: left;}
-.ab-con-text{width: 500px;height: 300px;float: left;text-align: left;margin-top: 70px;margin-left: 70px}
-.ab-con-pic{float: right;text-align: left;margin-top: 45px}
+.pic {
+	width: 100%;
+	height: auto;
+	margin-right: auto;
+	margin-left: auto;
+}
 
-.rules{width: 1349px;height: 1400px;margin-right: auto;margin-left: auto;text-align: left;margin-top: 70px}
-.title-g{font-size: 22px;color: rgb(143, 194, 31);text-align:center;margin-top: 100px;
-    width: 200px;margin-left: auto;margin-right: auto}
-.title-y{font-size: 22px;color: rgb(254,198,27);text-align:center;margin-top: 100px;
-    width: 200px;margin-left: auto;margin-right: auto}
-.content{font-size: 17px;color: rgb(79,79,79);text-align:center;margin-top: 25px;}
-.rl{margin-top: 5px;letter-spacing: 1px}
+.aboutDDL {
+	width: 100%;
+	height: 550px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: left
+}
 
-.question{width: 1349px;height: 1470px;margin-right: auto;margin-left: auto;text-align: left;
-    margin-bottom:70px;margin-top: 70px}
-.que{margin-top: 35px;letter-spacing: 1px;color: #000}
-.ans{margin-top: 5px;letter-spacing: 1px;color: rgb(79,79,79)}
+.ab-con {
+	width: 1200px;
+	height: 400px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: left;
+}
 
-.rules a{text-decoration: none}
-.rules a:hover{cursor: text;text-decoration: none}
+.ab-con-text {
+	width: 500px;
+	height: 300px;
+	float: left;
+	text-align: left;
+	margin-top: 70px;
+	margin-left: 70px
+}
+
+.ab-con-pic {
+	float: right;
+	text-align: left;
+	margin-top: 45px
+}
+
+.rules {
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: left;
+	margin-top: 70px
+}
+
+.title-g {
+	font-size: 22px;
+	color: rgb(143, 194, 31);
+	text-align: center;
+	margin-top: 50px;
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto
+}
+
+.title-y {
+	font-size: 22px;
+	color: rgb(254, 198, 27);
+	text-align: center;
+	margin-top: 60px;
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto
+}
+
+.content {
+	font-size: 17px;
+	color: rgb(79, 79, 79);
+	text-align: left;
+	margin-top: 25px;
+	width:60%;
+	margin:0 auto;
+}
+
+.rl {
+	margin-top: 5px;
+	letter-spacing: 1px
+}
+
+.question {
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: left;
+	margin-bottom: 70px;
+	margin-top: 70px
+}
+
+.que {
+	margin-top: 35px;
+	letter-spacing: 1px;
+	color: #000
+}
+
+.ans {
+	margin-top: 5px;
+	letter-spacing: 1px;
+	color: rgb(79, 79, 79)
+}
+
+.rules a {
+	text-decoration: none
+}
+
+.rules a:hover {
+	cursor: text;
+	text-decoration: none
+}

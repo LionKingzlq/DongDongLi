@@ -1,14 +1,14 @@
 body{margin-left: -30px;}
-.pic{width: 1349px;height: auto;margin-right: auto;margin-left: auto;margin-bottom: 45px}
+.pic{width: 100%;height: auto;margin-right: auto;margin-left: auto;margin-bottom: 45px}
 
-.info{width: 1349px;height: 359px;letter-spacing: 2px;margin-left: auto; margin-right: auto;margin-bottom: 45px}
+.info{width: 100%;height: 359px;letter-spacing: 2px;margin-left: auto; margin-right: auto;margin-bottom: 30px}
 .info .info-pic{float:left;width:auto;height: auto;text-align: left}
-.info .info-intro{float:left;width:853px;height: auto;text-align: left;margin-left: 39px}
-.info .info-name{width: auto;height: auto;font-size: 56px;font-weight: bold}
+.info .info-intro{float:left;width:700px;height: auto;text-align: left;margin-left: 39px}
+.info .info-name{width: auto;height: auto;font-size: 50px;font-weight: bold}
 .info-title{width: auto;height: auto;font-size: 40px;color:rgb(79,79,79)}
-.info-quote1{width: auto;height: auto;font-size: 40px;color:rgb(79,79,79);margin-top: 20px}
-.info-quote2{width: auto;height: auto;font-size: 40px;color:rgb(79,79,79);margin-left: 138px;padding-left: 130px}
+.info-quote1{width: auto;height: auto;font-size: 35px;color:rgb(79,79,79);margin-top: 20px}
+.info-quote2{width: auto;height: auto;font-size: 35px;color:rgb(79,79,79);margin-left: 138px;padding-left: 130px}
 
-.intro{width: 1000px;height: auto;margin-left: auto;margin-right: auto}
-.intro p{text-indent: 2em;text-align: left;font-size: 20px;color:rgb(79,79,79);margin-top: 30px}
+.intro{width: 1000px;height: auto;margin-left: auto;margin-right: auto; clear:both;}
+.intro p{text-indent: 2em;text-align: left;font-size: 18px;color:rgb(79,79,79);margin-top: 30px}
 

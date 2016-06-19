@@ -31,7 +31,7 @@
 	language="javascript"></script>
 </head>
 
-<body style="margin-left: -35px;">
+<body style="">
 	<%--header--%>
 	<%@ include file="header.jsp"%>
 	<script>
@@ -43,7 +43,7 @@
 			<img src="<c:url value="/res/images/index/1.png"/> ">
 		</div>
 		<div class="motto"
-			style="background: url(<c:url value="/res/images/index/2.png"/>)">
+			style="background: url(<c:url value="/res/images/index/2.png"/>);">
 			<div class="tname">栋栋梨教育</div>
 			<div class="ttitle">带你走向更精彩的未来</div>
 			<div class="tintro">
@@ -58,7 +58,7 @@
 			<div>名师风采</div>
 		</div>
 		<div class="teacherIntro"
-			style="background: url(<c:url value="/res/images/index/3.png"/>)">
+			style="">
 			<img src="<c:url value="/res/images/index/4.png"/>">
 
 			<div class="name">
@@ -160,10 +160,10 @@
 	<script type="text/javascript">
 		$(function() {
 
-			document.documentElement.style.overflowX = 'hidden';
+			/* document.documentElement.style.overflowX = 'hidden'; */
 			var r =  document.body.offsetWidth / window.screen.availWidth;
-			if(r > 1)
-				$(document.body).css({"-webkit-transform":"scaleX(" + 0.93 + ")"});
+			/* if(r > 1)
+				$(document.body).css({"-webkit-transform":"scaleX(" + 0.93 + ")"}); */
 		});
 		$(window).resize(function() {
 			var r = document.body.offsetWidth / window.screen.availWidth;
