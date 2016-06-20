@@ -97,7 +97,7 @@
 			} else {
 				$.ajax({
 					url : "/ddl/book/add",
-					type : 'post',
+					type : 'POST',
 					data : data,
 					dataType : 'json',
 					success : function(data) {
@@ -107,8 +107,8 @@
 							alert("添加失败，请重试");
 						}
 					},
-					error:function(){
-						alert("添加失败，请重试");
+					error:function(data){
+						alert("添加失败，请重试" + data);
 					}
 				});
 			}

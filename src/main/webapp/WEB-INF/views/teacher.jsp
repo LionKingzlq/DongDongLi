@@ -52,8 +52,8 @@
 
 	<div class="info">
 		<div class="info-pic">
-			<img src="<c:url value="/res/images/teacher/2.png"/>"
-				style="margin-left: 98px; width: 359px; height: 359px; -webkit-border-radius: 50em; -moz-border-radius: 50em; border-radius: 50em;">
+			<img src="<c:url value="/${teacher.imgPath}"/>"
+				style="margin-left: 98px; height: 359px; -webkit-border-radius: 50em; -moz-border-radius: 50em; border-radius: 50em;">
 		</div>
 		<div class="info-intro">
 			<div class="info-name">${teacher.name}</div>

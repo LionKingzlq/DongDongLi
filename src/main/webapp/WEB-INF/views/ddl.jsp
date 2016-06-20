@@ -57,18 +57,18 @@
 							src="/ddl/upload/teacher_2.png" /></a>
 					</div>
 					<div class="title">
-						<a class="name" href="/ddl/teacher/detail?id=2" style="color: rgb(79, 79, 79)" target="_blank">张立权</a>
+						<a class="name" href="/ddl/teacher/detail?id=2" style="color: rgb(79, 79, 79)" target="_blank">黎昊</a>
 					</div>
 				</li>
-				<li>
+				<!-- <li>
 					<div class="pic">
-						<a href="/ddl/teacher/detail?id=3" target="_blank"><img
-							src="/ddl/upload/teacher_3.png" /></a>
+						<a href="/ddl/teacher/detail?id=2" target="_blank"><img
+							src="/ddl/upload/teacher_2.png" /></a>
 					</div>
 					<div class="title">
-						<a class="name" href="/ddl/teacher/detail?id=3" style="color: rgb(79, 79, 79)" target="_blank">梨浩</a>
+						<a class="name" href="/ddl/teacher/detail?id=2" style="color: rgb(79, 79, 79)" target="_blank">张立权</a>
 					</div>
-				</li>
+				</li> -->
 			</ul>
 		</div>
 	</div>
@@ -95,11 +95,15 @@
 
 .bd ul li .pic {
 	text-align: center;
-	width: 220px
+	width: 200px
 }
-
+.bd ul li .pic a{
+	text-align: center;
+	width: 100%;
+}
 .bd ul li .pic img {
-	width: 200px;
+	height: 200px;
+	margin:0 auto;
 	display: block;
 	padding: 2px;
 }
