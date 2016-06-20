@@ -79,7 +79,7 @@
 					大梨老师
 					<text style="color:#acd455">踏实严谨的教学风格</text>
 				</div>
-				<div class="slo">培养习惯，塑造人格</div>
+				<div class="slo">最重要的是心灵的交流</div>
 			</div>
 		</div>
 	</div>

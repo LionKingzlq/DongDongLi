@@ -54,6 +54,11 @@
 			}).bind('fileuploaddone', function(e, data) {
 				if (data.result.code == 200)
 					layer.msg("成功添加"+ data.result.num,{time:1000});
+				else if (data.result.code == 400)
+					layer.msg("添加失败，请重新尝试",{time:1000});
+				else{
+					layer.msg("网络错误， 请重新尝试",{time:1000});
+				}
 			});
 		}
 		function finish(){

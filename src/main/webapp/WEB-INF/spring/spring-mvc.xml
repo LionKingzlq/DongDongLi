@@ -76,7 +76,7 @@
     <interceptor>
         <!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller， 如果是/admin/** 便是admin的子路也会拦截，否则至拦截admin/下的-->
         <mapping path="/admin/*" />
-        <beans:bean class="com.ddl.filter.CheckInterceptor"></beans:bean>    
+        <beans:bean class="com.ddl.authorization.CheckInterceptor"></beans:bean>    
     </interceptor>
     <!-- 当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法 -->  
 </interceptors> 

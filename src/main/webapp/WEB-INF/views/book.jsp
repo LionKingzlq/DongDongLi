@@ -103,6 +103,12 @@
 					success : function(data) {
 						if(data.flag)
 							alert("成功添加，请继续");
+						else{
+							alert("添加失败，请重试");
+						}
+					},
+					error:function(){
+						alert("添加失败，请重试");
 					}
 				});
 			}

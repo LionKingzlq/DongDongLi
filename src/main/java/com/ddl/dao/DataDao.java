@@ -66,7 +66,7 @@ public class DataDao extends BaseDao{
 				return true;
 			}
 		} catch (Exception e) {
-			logger.error(e.getMessage());
+			logger.debug(e.getMessage());
 		}
 		return false;
 	}

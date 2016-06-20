@@ -28,7 +28,7 @@
 
 	<filter>
 		<filter-name>securityServlet</filter-name>
-		<filter-class>com.ddl.filter.CheckFilter</filter-class>
+		<filter-class>com.ddl.authorization.CheckFilter</filter-class>
 		<init-param>
 			<param-name>encoding</param-name>
 			<param-value>UTF-8</param-value>

@@ -24,6 +24,7 @@ public class Admin {
 	@Column(name="adminId")
 	private int adminId;
 	
+	
 	public int getAdminId() {
 		return adminId;
 	}

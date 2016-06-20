@@ -60,7 +60,7 @@
 				class="table table-border table-bordered table-hover table-bg table-sort">
 				<thead>
 					<tr class="text-c">
-						<th width="25"><input type="checkbox" name="" value=""></th>
+						<th width="25"><input type="checkbox" name="" value="-1"></th>
 						<th width="40">ID</th>
 						<th width="80">学区名</th>
 						<th width="150">地址</th>
@@ -104,7 +104,7 @@
 							for (x in addresses) {
 								var address = addresses[x];
 
-								var tdSelect = "<td><input type='checkbox' value='1' name=''></td>";
+								var tdSelect = "<td><input type='checkbox' value='"+ address['id'] +"' name=''></td>";
 								var tdId = "<td>" + address['id'] + "</td>";
 
 								var tdName = "<td><u style='cursor: pointer' class='text-primary' onclick=\"member_show('"
@@ -175,8 +175,9 @@
 		}
 		function datadel(){
 			var data =[]; 
-			$("input:checkbox:checked").each(function(){ 
-				data.push($(this).val()); 
+			$("input:checkbox:checked").each(function(){
+				if($(this).val() > -1)
+					data.push($(this).val()); 
 			});
 			$.ajax({
 				url : "/ddl/address/deleteMore",

@@ -33,7 +33,7 @@ public class TeacherDao extends BaseDao {
 				return true;
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			logger.debug(e.getMessage());
 		}
 		return false;
 	}
@@ -52,7 +52,7 @@ public class TeacherDao extends BaseDao {
 			if (list.size() > 0)
 				return (Teacher) list.get(0);
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			logger.debug(e.getMessage());
 		}
 		return null;
 	}

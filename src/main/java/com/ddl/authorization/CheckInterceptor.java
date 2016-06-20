@@ -1,4 +1,4 @@
-package com.ddl.filter;
+package com.ddl.authorization;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,8 +15,6 @@ public class CheckInterceptor implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		
-//		return true;
 		
 		log.info("==============执行顺序: 1、preHandle================");    
         String requestUri = request.getRequestURI();  

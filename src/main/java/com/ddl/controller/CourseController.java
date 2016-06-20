@@ -62,7 +62,7 @@ public class CourseController {
 	public JSONObject update(Course course){
 		JSONObject result = new JSONObject();
 		boolean flag = courseService.update(course);
-		result.put("data", flag);
+		result.put("flag", flag);
 		return result;
 	}
 	

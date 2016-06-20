@@ -25,8 +25,8 @@
 		class="form form-horizontal">
 		<div class="row cl">
 			<label class="form-label col-3"><span class="c-red">*</span>选择文件：</label>
-			<input type="file" id="courseList" name="courseList"
-				nullmsg="文件不能为空" multiple />
+			<input type="file" id="courseList" name="courseList" nullmsg="文件不能为空"
+				multiple />
 			<div class="col-4"></div>
 		</div>
 		<div class="row cl">
@@ -53,10 +53,21 @@
 				sequentialUploads : true
 			}).bind('fileuploaddone', function(e, data) {
 				if (data.result.code == 200)
-					layer.msg("成功添加"+ data.result.num,{time:1000});
+					layer.msg("成功添加" + data.result.num, {
+						time : 1000
+					});
+				else if (data.result.code == 400)
+					layer.msg("添加失败，请重新尝试", {
+						time : 1000
+					});
+				else {
+					layer.msg("网络错误， 请重新尝试", {
+						time : 1000
+					});
+				}
 			});
 		}
-		function finish(){
+		function finish() {
 			parent.location.reload();
 			layer.close();
 		}
