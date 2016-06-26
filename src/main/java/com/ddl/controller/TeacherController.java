@@ -44,6 +44,7 @@ public class TeacherController {
 		String[] mottoes = result.getMotto().split("#");
 		model.addAttribute("mottoes", mottoes);
 		model.addAttribute("flag", mottoes.length > 1 ? true : false);
+		
 		return "teacher";
 	}
 	

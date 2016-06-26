@@ -47,7 +47,7 @@
           <div style="color: #ffffff;font-size: 17px;margin-top: 20px">weibo</div>
         </div>
         <div style="float:left;width: 142px;text-align: center">
-          <img src="<c:url value="/res/images/footer/sm-wxcode.png"/>"
+          <img src="<c:url value="/res/upload/data_2.png"/>"
                style="width: 90px;margin-top: 20px">
           <div style="color: #ffffff;font-size: 17px;margin-top: 20px">wechat</div>
         </div>

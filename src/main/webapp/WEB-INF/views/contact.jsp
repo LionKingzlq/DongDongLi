@@ -64,11 +64,11 @@
     </div>
     <div style="width: 600px;height:424px;margin-left: auto;margin-right: auto;margin-top: 100px">
       <div style="float: left;text-align: center">
-        <img src="<c:url value="/res/images/contact/lg-wbcode.png"/>">
+        <img src="<c:url value="/res/images/contact/lg-wbcode.png"/>" style="width: 244px;">
         <div class="tx-code">官方微博账号</div>
       </div>
       <div style="float: right;text-align: center">
-        <img src="<c:url value="/res/images/contact/lg-wxcode.png"/>">
+        <img src="<c:url value="/res/upload/data_2.png"/>" style="width: 244px;">
         <div class="tx-code">官方微信公众号</div>
       </div>
     </div>

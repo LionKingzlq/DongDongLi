@@ -61,7 +61,7 @@
             <a href="/ddl/about">关于栋栋梨</a>|
             <a href="/ddl/teacher">名师风采</a>|
             <a>学员荣誉</a>|
-            <a id="/ddl/us" href="contact">联系我们</a>
+            <a id="/ddl/us" href="/ddl/contact">联系我们</a>
         </div>
     </div>
 </div>
