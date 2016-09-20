@@ -8,8 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.ddl.model.Admin;
 import com.ddl.model.BookRegistration;
+import com.ddl.model.Teacher;
 import com.ddl.service.IBookRegistrationService;
 
 import net.sf.json.JSONObject;
@@ -21,48 +21,38 @@ public class BookRegistrationController {
 	@Resource
 	private IBookRegistrationService bookRegistrationService;
 	
-	@RequestMapping(value="")
-	public String login() {
-		return "admin/login";
-	}
-	
-	@RequestMapping(value="index")
-	public String Index(){
-		return "admin/index";
-	}
-	
 	@ResponseBody
 	@RequestMapping(value="add",method= RequestMethod.POST)
-	public JSONObject add(Admin admin){
+	public JSONObject add(BookRegistration BookRegistration){
 		JSONObject result = new JSONObject();
-		boolean flag = bookRegistrationService.save(admin);
-		result.put("data", flag);
+		boolean flag = bookRegistrationService.save(BookRegistration);
+		result.put("flag", flag);
 		return result;
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="delete",method= RequestMethod.POST)
-	public JSONObject delete(Admin admin){
+	public JSONObject delete(BookRegistration BookRegistration){
 		JSONObject result = new JSONObject();
-		boolean flag = bookRegistrationService.delete(admin);
+		boolean flag = bookRegistrationService.delete(BookRegistration);
 		result.put("flag", flag);
 		return result;
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="get",method= RequestMethod.GET)
-	public JSONObject get(Admin admin){
+	public JSONObject get(BookRegistration BookRegistration){
 		JSONObject result = new JSONObject();
-		Admin admin2 = (Admin)bookRegistrationService.get(admin);
-		result.put("admin", admin2);
+		BookRegistration BookRegistration2 = (BookRegistration)bookRegistrationService.get(BookRegistration);
+		result.put("BookRegistration", BookRegistration2);
 		return result;
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="update",method= RequestMethod.POST)
-	public JSONObject update(Admin admin){
+	public JSONObject update(BookRegistration BookRegistration){
 		JSONObject result = new JSONObject();
-		boolean flag = bookRegistrationService.update(admin);
+		boolean flag = bookRegistrationService.update(BookRegistration);
 		result.put("data", flag);
 		return result;
 	}
@@ -77,5 +67,13 @@ public class BookRegistrationController {
 		return result;
 	}
 	
-	
+	@ResponseBody
+	@RequestMapping(value="/deleteMore",method = RequestMethod.POST)
+	public void deleteMore(int[] ids){
+		for (int id:ids) {
+			BookRegistration book = new BookRegistration();
+			book.setId(id);
+			bookRegistrationService.delete(book);
+		}
+	}
 }
