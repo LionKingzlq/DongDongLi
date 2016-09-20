@@ -5,11 +5,13 @@
 	version="2.5">
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/applicationContext.xml</param-value>
+		<param-value>/WEB-INF/spring/applicationContext.xml;/WEB-INF/spring/spring-hibernate.xml</param-value>
 	</context-param>
+	
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -26,7 +28,7 @@
 
 	<filter>
 		<filter-name>securityServlet</filter-name>
-		<filter-class>com.ddl.filter.CheckFilter</filter-class>
+		<filter-class>com.ddl.authorization.CheckFilter</filter-class>
 		<init-param>
 			<param-name>encoding</param-name>
 			<param-value>UTF-8</param-value>
