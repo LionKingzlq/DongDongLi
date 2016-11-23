@@ -16,16 +16,13 @@
 	href="<c:url value="/res/css/bootstrap-theme.css"/>">
 <link type="text/css" rel="stylesheet"
 	href="<c:url value="/res/css/apply.css"/>">
-<script src="<c:url value="/res/js/jquery-1.9.1.min.js"/>"
-	language="javascript"></script>
-<script src="<c:url value="/res/js/jquery.SuperSlide.2.1.1.js"/>"
-	language="javascript"></script>
-<script src="<c:url value="/res/js/bootstrap.js"/>"
-	language="javascript"></script>
+<script src="js/jquery-1.9.1.min.js" ></script>
+<script src="js/jquery.SuperSlide.2.1.1.js" ></script>
+<script src="<c:url value="/res/js/bootstrap.js"/>" ></script>
 <style type="text/css">
-.c-red{
-	color:red;	
-} 
+.c-red {
+	color: red;
+}
 </style>
 </head>
 
@@ -48,11 +45,11 @@
 					$("#applyForm").submit();
 				});
 				$("#clearBtn").click(function() {
-					document.getElementById('applyForm').reset();
+					
 				});
 			}
-		});
-		$(function() {
+			
+			
 			var campus = [ '奉贤八字桥路校区', '杨浦新江湾校区', '虹口物华路校区', '浦东联洋校区', '卢湾校区' ]
 			var grades = [ '一年级', '二年级', '三年级', '四年级', '五年级', '六年级', '七年级',
 					'八年级', '九年级' ]
@@ -101,14 +98,16 @@
 					data : data,
 					dataType : 'json',
 					success : function(data) {
-						if(data.flag)
+						if (data.flag){
 							alert("成功添加，请继续");
-						else{
+							document.getElementById('applyForm').reset();
+						}
+						else {
 							alert("添加失败，请重试");
 						}
 					},
-					error:function(data){
-						alert("添加失败，请重试" + data);
+					error : function(data) {
+						alert("网络问题，请稍后再试");
 					}
 				});
 			}
@@ -116,7 +115,8 @@
 	</script>
 
 	<div class="bigPic">
-		<img src="<c:url value="/res/images/apply/3.png"/>">
+		<img src="<c:url value="/res/images/apply/3.png"/>"
+			style="width: 100%;" />
 	</div>
 
 	<div class="apply-Form">
@@ -143,9 +143,8 @@
 					</select>
 				</div>
 				<div class="form-context">
-					<label for="teacherName">教师姓名:</label>
-					<input id="teacherName" name="teacherName" type="text"
-						placeholder="教师姓名">
+					<label for="teacherName">教师姓名:</label> <input id="teacherName"
+						name="teacherName" type="text" placeholder="教师姓名">
 				</div>
 				<div class="form-context">
 					<label for="studentName"><span class="c-red">*</span>学生姓名:</label>
@@ -153,12 +152,13 @@
 						placeholder="学生姓名">
 				</div>
 				<div class="form-context">
-					<label for="parentName"><span class="c-red">*</span>家长姓名:</label> <input id="parentName"
-						name="parentName" type="text" placeholder="家长姓名">
+					<label for="parentName"><span class="c-red">*</span>家长姓名:</label> <input
+						id="parentName" name="parentName" type="text" placeholder="家长姓名">
 				</div>
 				<div class="form-context">
-					<label for="parentPhone"><span class="c-red">*</span>家长电话:</label> <input id="parentPhone"
-						name="parentPhone" type="text" placeholder="家长电话">
+					<label for="parentPhone"><span class="c-red">*</span>家长电话:</label>
+					<input id="parentPhone" name="parentPhone" type="text"
+						placeholder="家长电话">
 				</div>
 				<div class="form-context">
 					<label for="studentId">学生身份证号:</label> <input id="studentID"
@@ -166,7 +166,8 @@
 				</div>
 			</form>
 			<div class="formBtn">
-				<a class="a-btn" onclick="add();" style="float: left"> <img id="comfirmBtn" src="<c:url value="/res/images/apply/6.png"/>">
+				<a class="a-btn" onclick="add();" style="float: left"> <img
+					id="comfirmBtn" src="<c:url value="/res/images/apply/6.png"/>">
 				</a> <a class="a-btn" type="reset" style="float: right"> <img
 					id="clearBtn" class="clearBtn"
 					src="<c:url value="/res/images/apply/7.png"/>">
@@ -182,7 +183,7 @@
 			<div class="right-ddl">栋栋梨教育</div>
 			<div class="right-til">专业&nbsp;&nbsp;一流&nbsp;&nbsp;领先的教育集团</div>
 			<img class="right-QRcode"
-				src="<c:url value="/res/images/apply/9.png"/>">
+				src="<c:url value="/res/upload/data_2.png"/>" style="width: 190px;" />
 			<div class="right-phone">咨询电话：021-67182152</div>
 		</div>
 	</div>

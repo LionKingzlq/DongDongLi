@@ -1,9 +1,9 @@
-.bigPic{width: 1349px;height: auto;margin-right: auto;margin-left: auto;margin-top: 24px;}
+.bigPic{width: 100%;height: auto;margin-right: auto;margin-left: auto;margin-top: 24px;}
 
-.apply-Form{width: 1349px;height: 661px;
-    margin-right: auto;margin-left: auto;margin-top: 30px;margin-bottom: 70px;}
-.apply-Form .left-form{width: 815px;float: left;text-align: left;float: left;margin-top: 10px;
-    font-size: 30px;color:rgb(143, 194, 31);letter-spacing: 3px;}
+.apply-Form{width: 100%;
+    margin-right: auto;margin-left: auto;margin-top: 30px;}
+.apply-Form .left-form{width: 55%;float: left;text-align: left;float: left;margin-top: 10px;
+    font-size: 30px;color:rgb(143, 194, 31);letter-spacing: 3px; margin-bottom:50px;}
 .applyForm{text-align:left;color: black;margin-top: 30px;margin-left: 170px;width: auto;}
 .applyForm label{font-size: 22px;font-weight: normal;text-align: right;width: 160px}
 .applyForm .form-context{margin-bottom: 10px}
@@ -13,9 +13,9 @@
 .formBtn .a-btn{width: 229px;height: 64px;text-decoration: none;}
 .a-btn:hover{text-decoration: none}
 
-.sep{width: 10px;float: left;margin-top: 10px;height: 620px;overflow: hidden}
+.sep{width: 10px;float: left;margin-top: 10px;height: 100%;overflow: hidden}
 
-.right-form{width: 524px;text-align: center;height: 600px;float: left}
+.right-form{width: 40%;text-align: center;float: left}
 .right-logo{margin-left: auto;margin-right: auto;margin-top: 40px;}
 .right-ddl{margin-left: auto;margin-right: auto;margin-top: 5px;
     font-size: 46px;font-weight: bold;letter-spacing: 5px;}

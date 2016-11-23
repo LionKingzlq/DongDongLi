@@ -44,7 +44,7 @@
 		</div> -->
 		<div class="motto"
 			style="background: url(<c:url value="/res/images/index/2.png"/>);">
-			<img src="<c:url value="/res/images/index/1.png"/>"
+			<img src="<c:url value="/res/upload/data_47.png"/>"
 				style="position: absolute; left: 0;">
 			<div style="float: right; width: 500px;">
 				<div class="tname">栋栋梨教育</div>

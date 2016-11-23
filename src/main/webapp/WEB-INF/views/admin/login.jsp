@@ -22,7 +22,7 @@
 		var name = $("#name").val();
 		var passWord = $("#passWord").val();
 		$.ajax({
-			url:"/ddl/admin/login",
+			url:"/admin/login",
 			type:"POST",
 			data:"name="+name+"&passWord="+passWord,
 			success:function(data){
