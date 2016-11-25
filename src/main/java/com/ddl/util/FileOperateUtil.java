@@ -159,7 +159,7 @@ public class FileOperateUtil {
 		}
 	}
 
-	private static void init(HttpServletRequest request) {
+	public static void init(HttpServletRequest request) {
 		if (FILEDIR == null) {
 			FILEDIR = request.getSession().getServletContext().getRealPath("/") + "file/";
 		}
