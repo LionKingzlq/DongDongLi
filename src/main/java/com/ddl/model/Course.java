@@ -8,6 +8,10 @@ import javax.persistence.Id;
 
 import com.ddl.util.FormatUtil;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+@Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Entity(name="Course")
 public class Course {
 
@@ -25,7 +29,7 @@ public class Course {
 	private String startTime;
 	
 	@Column(name="classDay")
-	private String classDay;
+	private String classDate;
 	
 	@Column(name="classTime")
 	private String classTime;
@@ -47,9 +51,6 @@ public class Course {
 	
 	@Column(name="adminId")
 	private int adminId;
-	
-	@Column(name="adminName")
-	private String adminName;
 	
 	@Column(name="addTime")
 	private Date addTime;
@@ -86,12 +87,12 @@ public class Course {
 		this.startTime = startTime;
 	}
 
-	public String getClassDay() {
-		return classDay;
+	public String getClassDate() {
+		return classDate;
 	}
 
-	public void setClassDay(String classDay) {
-		this.classDay = classDay;
+	public void setClassDate(String classDate) {
+		this.classDate = classDate;
 	}
 
 	public String getClassTime() {
@@ -150,16 +151,8 @@ public class Course {
 		this.adminId = adminId;
 	}
 
-	public String getAdminName() {
-		return adminName;
-	}
-
-	public void setAdminName(String adminName) {
-		this.adminName = adminName;
-	}
-
-	public String getAddTime() {
-		return FormatUtil.Date2String(addTime);
+	public Date getAddTime() {
+		return addTime;
 	}
 
 	public void setAddTime(Date addTime) {
