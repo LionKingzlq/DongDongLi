@@ -3,6 +3,7 @@ package com.ddl.dao;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -55,6 +56,20 @@ public class AdminDao extends BaseDao {
 			session.getTransaction().commit();
 			releaseSession(session);
 			return result;
+		} catch (Exception e) {
+			logger.error("checkAdmin:"+e.getMessage());
+			return null;
+		}
+	}
+
+	public List<Admin> getAuthorityName(String username){
+		try {
+			Session session = getSession();
+			SQLQuery sqlQuery = session.createSQLQuery("SELECT * FROM  ADMIN WHERE ADMIN.NAME = :name");
+			sqlQuery.setString("name", username);
+			List<Admin> list = sqlQuery.addEntity(Admin.class).list();
+			releaseSession(session);
+			return list;
 		} catch (Exception e) {
 			logger.error("checkAdmin:"+e.getMessage());
 			return null;

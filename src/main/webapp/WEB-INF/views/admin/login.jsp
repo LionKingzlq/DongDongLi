@@ -11,36 +11,20 @@
 <script type="text/javascript" src="lib/respond.min.js"></script>
 <script type="text/javascript" src="lib/PIE_IE678.js"></script>
 <![endif]-->
-<link href="css/H-ui.min.css" rel="stylesheet" type="text/css" />
-<link href="css/H-ui.login.css" rel="stylesheet" type="text/css" />
-<link href="css/style.css" rel="stylesheet" type="text/css" />
-<link href="lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="/ddl/res/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="/ddl/res/css/H-ui.login.css" rel="stylesheet" type="text/css" />
+<link href="/ddl/res/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/ddl/res/lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
 <![endif]-->
 <title>栋栋力后台登录</title>
 <script type="text/javascript">
-	function login(){
-		var name = $("#name").val();
-		var passWord = $("#passWord").val();
-		$.ajax({
-			url:"/admin/login",
-			type:"POST",
-			data:"name="+name+"&passWord="+passWord,
-			success:function(data){
-				if(data.result != 0){
-					$.cookie("adminId", data.result);
-					window.location.href="/ddl/admin/index";
-				}else{
-					alert("用户名或密码错误");
-				}
-			},
-			error:function(data){
-				if(data.result){
-					alert("用户名或密码错误");
-				}else{
-					alert("用户名或密码错误");
-				}
-			}
-		})
+	function check(){
+      var p = $("#passWord").val();
+      if(p != ""){
+        $("#passWord").val(md5(p));
+        return true;
+      }
+      return false;
 	}
 </script>
 </head>
@@ -49,17 +33,17 @@
 <div class="header">栋栋力后台数据管理系统</div>
 <div class="loginWraper">
   <div id="loginform" class="loginBox">
-    <form class="form form-horizontal" action="/ddl/admin/login" method="post">
+    <form class="form form-horizontal" action="/ddl/j_spring_security_check" method="post" onsubmit="return check();">
       <div class="row cl">
         <label class="form-label col-3"><i class="Hui-iconfont">&#xe60d;</i></label>
         <div class="formControls col-8">
-          <input id="name" name="name" type="text" placeholder="账户" class="input-text size-L">
+          <input id="name" name="j_username" type="text" placeholder="账户" class="input-text size-L">
         </div>
       </div>
       <div class="row cl">
         <label class="form-label col-3"><i class="Hui-iconfont">&#xe60e;</i></label>
         <div class="formControls col-8">
-          <input id="passWord" name="passWord" type="password" placeholder="密码" class="input-text size-L">
+          <input id="passWord" name="j_password" type="password" placeholder="密码" class="input-text size-L">
         </div>
       </div>
       <div class="row">
@@ -71,7 +55,7 @@
       </div>
       <div class="row">
         <div class="formControls col-8 col-offset-3">
-          <input name="" type="Button" class="btn btn-success radius size-L" onclick="login();" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
+          <input name="" type="submit" class="btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
           <input name="" type="reset" class="btn btn-default radius size-L" value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
         </div>
       </div>
@@ -79,8 +63,9 @@
   </div>
 </div>
 <div class="footer">Copyright 栋栋力教育培训机构</div>
-<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
-<script type="text/javascript" src="lib/jquery/1.9.1/jquery.cookie.js"></script> 
-<script type="text/javascript" src="js/H-ui.js"></script>
+<script src="/ddl/res/lib/jquery/1.9.1/jquery.min.js"></script>
+<script src="/ddl/res/lib/jquery/1.9.1/jquery.cookie.js"></script>
+<script src="/ddl/res/js/H-ui.js"></script>
+<script src="/ddl/res/js/md5.js"></script>
 </body>
 </html>

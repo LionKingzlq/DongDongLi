@@ -5,40 +5,42 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
           http://www.springframework.org/schema/security
-          http://www.springframework.org/schema/security/spring-security-3.0.3.xsd">
+          http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
 	<s:http pattern="/res/lib/zTree" security="none"/>
-	
+    <s:http pattern="/res/**" security="none"/>
+    <s:http pattern="/css/**" security="none" />
+    <s:http pattern="/images/**" security="none" />
+    <s:http pattern="/js/**" security="none" />
+    <s:http pattern="/lib/**" security="none" />
+    <s:http pattern="/skin/**" security="none" />
+    <s:http pattern="/temp/**" security="none" />
+    <s:http pattern="/template/**" security="none" />
+    <s:http pattern="/upload/**" security="none" />
+    <s:http pattern="/*.html" security="none" />
+
 	<s:http auto-config='true'>
-		<s:intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<s:intercept-url pattern="/res/lib/zTree" access="ROLE_USER" />
-		
-		<sec:form-login login-page="/login.jsp" default-target-url="/user/login" authentication-failure-url="/login.jsp?error=true"/>
-		
-		<s:session-management>
-			<s:concurrency-control
-				max-sessions="1" error-if-maximum-exceeded="true" />
-		</s:session-management>
+		<s:intercept-url pattern="/admin/index" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <s:intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<s:form-login login-page="/admin/login" default-target-url="/admin/index/" authentication-failure-url="/admin/login?error=true"/>
 	</s:http>
 
-	<beans:bean id="filterSecurityInterceptor" class="com.ddl.security.MyFilterSecurityInterceptor" >
-		<beans:property name="authenticationManager" ref="authenticationManager"/>
-		<beans:property name="accessDecisionManager" ref="accessDecisionManager"/>
-		<beans:property name="securityMetadataSource" ref="securityMetadataSource"/>
-		
-	</beans:bean>
+	<bean id="filterSecurityInterceptor" class="com.ddl.security.MyFilterSecurityInterceptor" >
+		<property name="authenticationManager" ref="authenticationManager"/>
+		<property name="accessDecisionManager" ref="accessDecisionManager"/>
+		<property name="securityMetadataSource" ref="securityMetadataSource"/>
+	</bean>
 	
 	<s:authentication-manager alias="authenticationManager">
-		<s:authentication-provider>
+		<s:authentication-provider user-service-ref="userDetailsService">
 			<!-- <s:user-service>
 				<s:user name="jimi" password="jimispassword" authorities="ROLE_USER, ROLE_ADMIN" />
 				<s:user name="bob" password="bobspassword" authorities="ROLE_USER" />
 			</s:user-service> -->
-			<s:user-service user-service-ref="userDetailsService"/>
 		</s:authentication-provider>
 	</s:authentication-manager>
 	
-	<beans:bean id="userDetailsService" class="com.ddl.security.MyUserDetailsService" />
-	<beans:bean id="securityMetadataSource" class="com.ddl.security.MyInvocationSecurityMetadataSource" />
-	<beans:bean id="accessDecisionManager" class="com.ddl.security.MyAccessDecisionManager" />
+	<bean id="userDetailsService" class="com.ddl.security.MyUserDetailsService" />
+	<bean id="securityMetadataSource" class="com.ddl.security.MyInvocationSecurityMetadataSource" />
+	<bean id="accessDecisionManager" class="com.ddl.security.MyAccessDecisionManager" />
 </beans>

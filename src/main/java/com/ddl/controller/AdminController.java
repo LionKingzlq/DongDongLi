@@ -24,27 +24,15 @@ public class AdminController {
 	@Resource
 	private IAdminService adminService;
 	
-	@RequestMapping(value="")
+	@RequestMapping(value="login")
 	public String login(HttpServletRequest request) {
 		FileOperateUtil.init(request);
-		
 		return "admin/login";
 	}
 	
-	@RequestMapping(value="index")
-	public String Index(){
-		return "admin/index";
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/login",method = RequestMethod.POST)
-	public JSONObject check(Model model, Admin admin, HttpSession session){
-		
-		JSONObject result = new JSONObject();
-		int adminId = adminService.checkAdmin(admin);
-		result.put("result", adminId);
-		session.setAttribute("adminId", adminId);
-		return result;
+	@RequestMapping(value="index",method= RequestMethod.GET)
+	public String Index() {
+			return "admin/index";
 	}
 	
 	@ResponseBody

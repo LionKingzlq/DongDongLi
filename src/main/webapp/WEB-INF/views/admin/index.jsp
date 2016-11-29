@@ -14,13 +14,13 @@
 <script type="text/javascript" src="lib/respond.min.js"></script>
 <script type="text/javascript" src="lib/PIE_IE678.js"></script>
 <![endif]-->
-<link href="../css/H-ui.min.css" rel="stylesheet" type="text/css" />
-<link href="../css/H-ui.admin.css" rel="stylesheet" type="text/css" />
-<link href="../skin/default/skin.css" rel="stylesheet" type="text/css"
+<link href="/ddl/res/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="/ddl/res/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="/ddl/res/skin/default/skin.css" rel="stylesheet" type="text/css"
 	id="skin" />
-<link href="../lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet"
+<link href="/ddl/res/lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet"
 	type="text/css" />
-<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<link href="/ddl/res/css/style.css" rel="stylesheet" type="text/css" />
 <!--[if IE 6]>F
 <script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
@@ -254,12 +254,12 @@
 			</div>
 		</div>
 	</section>
-	<script type="text/javascript" src="../lib/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/ddl/res/lib/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript"
-		src="../lib/jquery/1.9.1/jquery.cookie.js"></script>
-	<script type="text/javascript" src="../lib/layer/1.9.3/layer.js"></script>
-	<script type="text/javascript" src="../js/H-ui.js"></script>
-	<script type="text/javascript" src="../js/H-ui.admin.js"></script>
+		src="/ddl/res/lib/jquery/1.9.1/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/ddl/res/lib/layer/1.9.3/layer.js"></script>
+	<script type="text/javascript" src="/ddl/res/js/H-ui.js"></script>
+	<script type="text/javascript" src="/ddl/res/js/H-ui.admin.js"></script>
 	<script type="text/javascript">
 		/*资讯-添加*/
 		function article_add(title, url) {

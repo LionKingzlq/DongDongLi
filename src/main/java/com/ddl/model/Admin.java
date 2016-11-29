@@ -20,7 +20,10 @@ public class Admin {
 	
 	@Column(name="passWord")
 	private String passWord;
-	
+
+	@Column(name="role")
+	private String role;
+
 	@Column(name="adminId")
 	private int adminId;
 	
@@ -58,6 +61,14 @@ public class Admin {
 
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public String getAddTime() {

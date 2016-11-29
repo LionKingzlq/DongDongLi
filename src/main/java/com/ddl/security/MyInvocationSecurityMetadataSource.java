@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.ddl.dao.AdminDao;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
@@ -17,7 +18,8 @@ import org.springframework.security.web.access.intercept.FilterInvocationSecurit
 public class MyInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 
 	@Resource
-//	private UserDao userDao;
+	private AdminDao adminDao;
+
 	private static Map<String, Collection<ConfigAttribute>> resourceMap = null;
 	
 	public MyInvocationSecurityMetadataSource() {
