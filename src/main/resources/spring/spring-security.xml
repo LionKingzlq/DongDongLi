@@ -7,11 +7,11 @@
           http://www.springframework.org/schema/security
           http://www.springframework.org/schema/security/spring-security-3.0.3.xsd">
 
-	<s:http pattern="/res/**" security="none"/>
+	<s:http pattern="/res/lib/zTree" security="none"/>
 	
 	<s:http auto-config='true'>
 		<s:intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<s:intercept-url pattern="/**" access="ROLE_USER" />
+		<s:intercept-url pattern="/res/lib/zTree" access="ROLE_USER" />
 		
 		<sec:form-login login-page="/login.jsp" default-target-url="/user/login" authentication-failure-url="/login.jsp?error=true"/>
 		

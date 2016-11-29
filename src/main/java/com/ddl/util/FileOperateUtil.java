@@ -71,37 +71,7 @@ public class FileOperateUtil {
 		}
 		return filePath;
 	}
-	
-	/**
-	 * 
-	 * @param request
-	 * @throws IOException
-	 */
-	public String upLoadFile(HttpServletRequest request, String fileName) throws IOException {
-		init(request);
 
-		MultipartHttpServletRequest mRequest = (MultipartHttpServletRequest) request;
-		Map<String, MultipartFile> fileMap = mRequest.getFileMap();
-		File file = new File(FILEDIR);
-		if (!file.exists()) {
-			file.mkdir();
-		}
-		Iterator<Map.Entry<String, MultipartFile>> it = fileMap.entrySet().iterator();
-
-		String filePath = null;
-
-		while (it.hasNext()) {
-			Map.Entry<String, MultipartFile> entry = it.next();
-			MultipartFile mFile = entry.getValue();
-			if (mFile.getSize() != 0 && !"".equals(mFile.getName())) {
-				filePath = initFilePath(fileName);
-				System.out.println("filePath:" + filePath);
-				write(mFile.getInputStream(), new FileOutputStream(filePath));
-			}
-		}
-
-		return filePath;
-	}
 
 	/**
 	 * 

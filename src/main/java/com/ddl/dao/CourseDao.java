@@ -84,7 +84,7 @@ public class CourseDao extends BaseDao {
 					
 					SQLQuery sqlQuery = session.createSQLQuery("INSERT INTO Course (addressId, grade, startTime, classDay, classTime, teacher, type, className, classRoom, times, adminId) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 					
-					sqlQuery.setInteger(0, (int) row.getCell(0).getNumericCellValue());
+//					sqlQuery.setInteger(0, (int) row.getCell(0).getNumericCellValue());
 					sqlQuery.setString(1, row.getCell(1).getStringCellValue());
 					sqlQuery.setString(2, row.getCell(2).getStringCellValue());
 					sqlQuery.setString(3, row.getCell(3).getStringCellValue());
@@ -122,7 +122,7 @@ public class CourseDao extends BaseDao {
 			sqlQuery.setInteger(0, course.getAddressId());
 			sqlQuery.setString(1, course.getGrade());
 			sqlQuery.setString(2, course.getStartTime());
-			sqlQuery.setString(3, course.getClassDay());
+//			sqlQuery.setString(3, course.getClassDay());
 			sqlQuery.setString(4, course.getClassTime());
 			sqlQuery.setString(5, course.getTeacher());
 			sqlQuery.setString(6, course.getType());
