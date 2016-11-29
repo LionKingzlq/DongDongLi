@@ -16,13 +16,13 @@ import org.springframework.security.web.access.intercept.FilterInvocationSecurit
 
 import com.abraham.dj.dao.UserDao;
 
-public class MyInvocationSecurityMetadataSourceService implements FilterInvocationSecurityMetadataSource {
+public class MyInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 
 	@Resource
 	private UserDao userDao;
 	private static Map<String, Collection<ConfigAttribute>> resourceMap = null;
 	
-	public MyInvocationSecurityMetadataSourceService() {
+	public MyInvocationSecurityMetadataSource() {
 //		loadResourceDefine();
 	}
 	@Override
