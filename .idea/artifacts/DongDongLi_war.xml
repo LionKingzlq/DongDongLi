@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="DongDongLi:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="ddl.war">
-      <element id="artifact" artifact-name="DongDongLi:war exploded" />
-    </root>
-  </artifact>
-</component>
