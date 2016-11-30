@@ -33,6 +33,6 @@ public class MyUserDetailsService implements UserDetailsService {
 		SimpleGrantedAuthority authority = new SimpleGrantedAuthority(roles);
 		auths.add(authority);
 
-		return new User(username,admin.getPassWord(),true,true,true,true,auths);
+		return new User(admin.getId() + ":" + username,admin.getPassWord(),true,true,true,true,auths);
 	}
 }

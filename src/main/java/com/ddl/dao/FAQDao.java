@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import com.ddl.security.SpringSecurityUtils;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Row;
@@ -65,7 +66,8 @@ public class FAQDao extends BaseDao{
 		}
 		return false;
 	}
-	
+
+	//需要添加一个字段，adminId
 	public int saveAll(String filePath) {
 		int result = 0;
 		if (!filePath.endsWith(".xlsx") && !filePath.endsWith(".xls")) {
@@ -86,6 +88,7 @@ public class FAQDao extends BaseDao{
 					sqlQuery.setString(0, row.getCell(0).getStringCellValue());
 					sqlQuery.setString(1, row.getCell(1).getStringCellValue());
 					sqlQuery.setInteger(2, (int) row.getCell(2).getNumericCellValue());
+//					sqlQuery.setInteger(2, SpringSecurityUtils.getCurrentId());
 					
 					sqlQuery.addEntity(FAQ.class);
 					

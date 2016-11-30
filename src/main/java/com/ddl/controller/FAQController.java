@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import com.ddl.security.SpringSecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -86,6 +87,9 @@ public class FAQController {
 	@ResponseBody
 	@RequestMapping(value = "faqAddList", method = RequestMethod.POST)
 	public JSONObject memberAddList(HttpServletRequest request) {
+
+		int adminId = Integer.valueOf(SpringSecurityUtils.getCurrentId());
+
 		JSONObject result = new JSONObject();
 		try {
 			request.setCharacterEncoding("utf-8");

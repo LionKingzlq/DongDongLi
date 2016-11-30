@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import com.ddl.security.SpringSecurityUtils;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Row;
@@ -110,6 +111,7 @@ public class InstructionAddressDao extends BaseDao{
 					sqlQuery.setString(1, row.getCell(1).getStringCellValue());
 					sqlQuery.setString(2, row.getCell(2).getStringCellValue());
 					sqlQuery.setInteger(3, (int) row.getCell(3).getNumericCellValue());
+//					sqlQuery.setInteger(3, SpringSecurityUtils.getCurrentId());
 					
 					sqlQuery.addEntity(InstructionAddress.class);
 					

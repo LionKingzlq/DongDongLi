@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import com.ddl.security.SpringSecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -70,7 +71,8 @@ public class DataController {
 	@ResponseBody
 	@RequestMapping(value = "dataAddList", method = RequestMethod.POST)
 	public JSONObject memberAddList(HttpServletRequest request) {
-		int adminId = Integer.parseInt(request.getParameter("adminId").toString());
+
+		int adminId = Integer.valueOf(SpringSecurityUtils.getCurrentId());
 		JSONObject result = new JSONObject();
 		try {
 			request.setCharacterEncoding("utf-8");
@@ -97,7 +99,8 @@ public class DataController {
 			dataService.delete(data);
 		}
 	}
-	
+
+	//上传一些字典中的图片，实现参数可配置
 	@ResponseBody
 	@RequestMapping(value = "upload")
 	public JSONObject upload(HttpServletRequest request) {
